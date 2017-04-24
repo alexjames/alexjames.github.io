@@ -21,6 +21,6 @@ Ideas from papers
   * This graph is a model of internet infrastructure. Nodes and edges represent key-value pairs.
   * Data was gathered from the RIPE Atlas and by crawling the Alexa top 100k.
   * Graph queries were run on the generated graph. Rules based on different attacks were established. Each rule has a pre-condition and a post-condition.
-  * For example, if a mail server is compromised, al connected notes are compromised. If n is compromised and domain m resolves to n, n is also compromised.
+  * For example, if a mail server is compromised, al connected notes are compromised. If n is compromised and domain m resolves to n, m is also compromised.
   * Taint-propogation -> Starting from initial set I, apply rules till they can no longer apply and look at the extent to which an attack propoagates.
   * The final graph had 1.8 million nodes and 4.7 million relationships.
