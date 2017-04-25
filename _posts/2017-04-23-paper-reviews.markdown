@@ -26,3 +26,7 @@ Ideas from papers
   * For example, if a mail server is compromised, all connected notes are compromised. If n is compromised and domain m resolves to n, m is also compromised.
   * Taint-propogation -> Starting from initial set I, apply rules till they can no longer apply and look at the extent to which an attack propogates.
   * The final graph had 1.8 million nodes and 4.7 million relationships.
+
+# The evolution of a x86 Virtual Machine Monitor
+## [Ole Agesen et al.]
+  * VMMs are responisbile for virtualizing a given architecture including the instruction set, memory, interrupt and basic I/O operations. A hypervisor combines a VMM and an OS. Ex VMWare's vSphere ESX hypervisor is a combo of the vmkernel and a VMM. The vmkernel contains a bootloader, an 86 hardware abstraction layer, I/O stacks for storage and networking as well as memory and CPU schedulers.
