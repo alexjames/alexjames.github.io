@@ -29,4 +29,6 @@ Ideas from papers
 
 # The evolution of a x86 Virtual Machine Monitor
 ## [Ole Agesen et al.]
-  * VMMs are responisbile for virtualizing a given architecture including the instruction set, memory, interrupt and basic I/O operations. A hypervisor combines a VMM and an OS. Ex VMWare's vSphere ESX hypervisor is a combo of the vmkernel and a VMM. The vmkernel contains a bootloader, an 86 hardware abstraction layer, I/O stacks for storage and networking as well as memory and CPU schedulers.
+  * VMMs are responisbile for virtualizing a given architecture including the instruction set, memory, interrupt and basic I/O operations. A hypervisor combines a VMM and an OS. Ex VMWare's vSphere ESX hypervisor is a combo of the vmkernel and a VMM. The vmkernel contains a bootloader, an x86 hardware abstraction layer, I/O stacks for storage and networking as well as memory and CPU schedulers.
+  * In 1998, x86 was considered un-virtualizable. VMs were typically done using trap-and-emulate. In this scheme, the guest code directly runs on the CPU with reduced priveleges. When the guest attempts to read or modify priveleged state, the processor generates a trap that transfers control to the VMM. The VMM then emulates the instruction using an interpreter and resumes direct execution of the guest at the next instruction.
+  * 
