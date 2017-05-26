@@ -51,3 +51,32 @@ nil
 In Clojure, each branch of the if statement can have only one form. So to have multiple forms in a conditional branch, we use 
 the do statement.
 
+```
+user=> (nil? nil)
+true
+user=> (nil? 1)
+false
+```
+
+You can do direct string comparison in Clojure.
+```
+user=> (= "ha" "ha")
+true
+user=> (= 4 3)
+false
+```
+
+Define a hashmap and get values:
+```
+user=> (def alex {:a 1 :b 2})
+#'user/alex
+
+user=> (get alex :a)
+1
+user=> (get alex :b)
+2
+user=> (get alex :n)
+nil
+```
+
+
