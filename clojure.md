@@ -51,6 +51,9 @@ nil
 In Clojure, each branch of the if statement can have only one form. So to have multiple forms in a conditional branch, we use 
 the do statement.
 
+### Boolean Expressions
+`nil?` function checks if a value is nil.
+
 ```
 user=> (nil? nil)
 true
@@ -78,5 +81,18 @@ user=> (get alex :b)
 user=> (get alex :n)
 nil
 ```
-
+Nested maps:
+```
+user=> (def alex {:a 1 :b "alia" :c {:a 9 :b 8}})
+#'user/alex
+user=> (get alex :c)
+{:a 9, :b 8}
+user=> (get (get alex :c) :a)
+9
+```
+Get function default return value
+```
+user=> (get alex :x "nooooo!")
+"nooooo!"
+```
 
