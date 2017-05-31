@@ -99,4 +99,26 @@ Get function default return value
 user=> (get alex :x "nooooo!")
 "nooooo!"
 ```
+Keywords are used primarily as keys in maps. They can also be used to as a replacement for the get function.
+```
+user=> (def alex {:a 1 :b 2})
+#'user/alex
+user=> (:a alex)
+1
+```
+
+Vectors
+These are zero-indexed collections.
+```
+user=> (def v [1 2 3])
+#'user/v
+user=> (get v 1)
+2
+user=> (get v 0)
+1
+user=> (vector "this" "is" "sparta")
+["this" "is" "sparta"]
+user=> (conj v 4)
+[1 2 3 4]
+```
 
