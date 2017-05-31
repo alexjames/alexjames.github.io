@@ -78,6 +78,8 @@ user=> (get alex :a)
 1
 user=> (get alex :b)
 2
+user=> (alex :b)
+2
 user=> (get alex :n)
 nil
 ```
@@ -89,6 +91,8 @@ user=> (get alex :c)
 {:a 9, :b 8}
 user=> (get (get alex :c) :a)
 9
+user=> (get-in alex [:c :b])
+8
 ```
 Get function default return value
 ```
