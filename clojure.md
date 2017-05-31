@@ -157,10 +157,35 @@ Increment
 ```
 boot.user=> (inc 3)
 4
-
+```
+Parameters
+```
+(defn no-params
+  []
+  "I take no parameters!")
+(defn one-param
+  [x]
+  (str "I take one parameter: " x))
+(defn two-params
+  [x y]
+  (str "Two parameters! That's nothing! Pah! I will smoosh them "
+  "together to spite you! " x y))
+```
+Rest parameter. Similar to varargs in C. The rest of the parameters come in as a list.
+```
+boot.user=> (defn crew
+       #_=>   [name & rest]
+       #_=>   (str "Hi, " name "! Your crew has: " rest)
+       #_=>   )
+#'boot.user/crew
+boot.user=> (crew "alex" "balia" "naiya" "joya")
+"Hi, alex! Your crew has: (\"balia\" \"naiya\" \"joya\")"
 ```
 
-### FILE IO
+
+
+
+### FILE I/O
 ```
 (use 'clojure.java.io)
 (with-open [wrtr (writer "/tmp/test.txt")]
@@ -174,5 +199,10 @@ boot.user=> (inc 3)
 (with-open [rdr (reader "/tmp/test.txt")]
   (doseq [line (line-seq rdr)]
     (println line)))
+```
 
+### MISC
+```
+boot.user=> (clojure.string/join "," ["this" "is" "comma" "separated"])
+"this,is,comma,separated"
 ```
