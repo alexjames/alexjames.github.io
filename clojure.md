@@ -211,7 +211,14 @@ boot.user=> (newfn)
 ```
 
 ### MISC
+Join function
 ```
 boot.user=> (clojure.string/join "," ["this" "is" "comma" "separated"])
 "this,is,comma,separated"
+```
+
+Type of a data structure
+```
+boot.user=> (type pok-data)
+clojure.lang.PersistentArrayMap
 ```
