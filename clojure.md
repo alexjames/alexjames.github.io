@@ -52,6 +52,8 @@ In Clojure, each branch of the if statement can have only one form. So to have m
 the do statement.
 
 ### Boolean Expressions
+`and` returns the first falsey of the last truthy value. 'or' returns the first truthy or last falsey value.
+
 `nil?` function checks if a value is nil.
 
 ```
@@ -139,4 +141,38 @@ user=> (def l `(1 2 3))
 user=> (nth l 2)
 3
 ```
+Sets are like sets in other languages, store unique elements.
+```
+user=> (def s #{1 2 3})
+#'user/s
+user=> (conj s 4)
+#{1 4 3 2}
+user=> (contains? s 2)
+true
+user=> (contains? s 5)
+false
+```
+### Functions
+Increment
+```
+boot.user=> (inc 3)
+4
 
+```
+
+### FILE IO
+```
+(use 'clojure.java.io)
+(with-open [wrtr (writer "/tmp/test.txt")]
+  (.write wrtr "Line to be written"))
+```
+```
+(slurp "/tmp/test.txt")
+```
+```
+(use 'clojure.java.io)
+(with-open [rdr (reader "/tmp/test.txt")]
+  (doseq [line (line-seq rdr)]
+    (println line)))
+
+```
