@@ -181,9 +181,18 @@ boot.user=> (defn crew
 boot.user=> (crew "alex" "balia" "naiya" "joya")
 "Hi, alex! Your crew has: (\"balia\" \"naiya\" \"joya\")"
 ```
-
-
-
+Clojure always returns the last form from a function's body.
+```
+#'boot.user/fn
+boot.user=> (defn newfn
+       #_=>   []
+       #_=>   (+ 2 3)
+       #_=>   "yeah!"
+       #_=>   ["hola" "cena"])
+#'boot.user/newfn
+boot.user=> (newfn)
+["hola" "cena"]
+```
 
 ### FILE I/O
 ```
