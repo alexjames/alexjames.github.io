@@ -121,4 +121,22 @@ user=> (vector "this" "is" "sparta")
 user=> (conj v 4)
 [1 2 3 4]
 ```
+Lists are also a linear collection of values. You cannot use `get` to fetch values. You have ot use the `nth` function.
+```
+user=> (def l (list 1 2 "3"))
+#'user/l
+user=> (nth l 0)
+1
+user=> (nth l 2)
+"3"
+user=> (nth l 3)
+
+IndexOutOfBoundsException   clojure.lang.RT.nthFrom (RT.java:885)
+```
+```
+user=> (def l `(1 2 3))
+#'user/l
+user=> (nth l 2)
+3
+```
 
