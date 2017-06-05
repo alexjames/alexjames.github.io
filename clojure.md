@@ -193,7 +193,17 @@ boot.user=> (defn newfn
 boot.user=> (newfn)
 ["hola" "cena"]
 ```
-
+Anonymous function haven no name.
+```
+boot.user=> #(* % 3)
+3#object[boot.user$eval2105$fn__2106 0x6c94a7f5 "boot.user$eval2105$fn__2106@6c94a7f5"]
+boot.user=> (map #(* % 3) '(1 2 3))
+(3 6 9)
+```
+```
+boot.user=> (#(str %1 " and " %2) "batman" "robin")
+"batman and robin"
+```
 ### FILE I/O
 ```
 (use 'clojure.java.io)
