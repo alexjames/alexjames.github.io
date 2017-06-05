@@ -285,6 +285,33 @@ Recursive functions
      (println "Goodbye!")
      (do (println (str "Iteration " x))
       (rec-trial (inc x)))))
+
+Alternate syntax:
+
+boot.user=> (loop [iteration 0]
+       #_=>   (println (str "Iteration " iteration))
+       #_=>   (if (> iteration 3)
+       #_=>     (println "Goodbye!")
+       #_=>     (recur (inc iteration))))
+Iteration 0
+Iteration 1
+Iteration 2
+Iteration 3
+Iteration 4
+Goodbye!
+nil
+boot.user=>
+
+boot.user=> (loop [x 10]
+       #_=>   (when (> x 1)
+       #_=>     (println x)
+       #_=>     (recur (- x 2))))
+10
+8
+6
+4
+2
+nil
 ```
 ### FILE I/O
 ```
