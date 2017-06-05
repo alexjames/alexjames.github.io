@@ -26,7 +26,7 @@ user=> ["string" "vector"]
 ["string" "vector"]
 ```
 
-Conditionals
+### Conditionals
 ```
 user=> (if true
   #_=>     "this is true"
@@ -51,6 +51,25 @@ nil
 In Clojure, each branch of the if statement can have only one form. So to have multiple forms in a conditional branch, we use 
 the do statement.
 
+```
+boot.user=> (if true
+       #_=>   (do (println "yeah")
+       #_=>       (println "this is nice")
+       #_=>       1)
+       #_=> )
+yeah
+this is nice
+1
+```
+`when` combines the two if you don't have an else statement:
+```
+boot.user=> (when true
+       #_=>   (println "Yeah!")
+       #_=>   "Booyeah!")
+Yeah!
+"Booyeah!"
+```
+
 ### Boolean Expressions
 `and` returns the first falsey of the last truthy value. 'or' returns the first truthy or last falsey value.
 
@@ -71,6 +90,7 @@ user=> (= 4 3)
 false
 ```
 
+### Collections
 Define a hashmap and get values:
 ```
 user=> (def alex {:a 1 :b 2})
@@ -204,6 +224,30 @@ boot.user=> (map #(* % 3) '(1 2 3))
 boot.user=> (#(str %1 " and " %2) "batman" "robin")
 "batman and robin"
 ```
+`map` applies a function to all members of a collection
+```
+boot.user=> (map inc [1 2 3 4])
+(2 3 4 5)
+boot.user=> (map #(* 3 %) [1 2 3 4])
+(3 6 9 12)
+boot.user=> (map odd? [1 2 3 4])
+(true false true false)
+```
+Map destructuring
+```
+boot.user=> (defn break-map 
+       #_=>   [{n :name a :age}]
+       #_=>   (println (str "My name is " n)))
+#'boot.user/break-map
+boot.user=> (break-map {:name "alex" :age 20})
+My name is alex
+nil
+boot.user=> (break-map {:age 20})
+My name is 
+nil
+```
+
+
 ### FILE I/O
 ```
 (use 'clojure.java.io)
