@@ -213,7 +213,7 @@ boot.user=> (defn newfn
 boot.user=> (newfn)
 ["hola" "cena"]
 ```
-Anonymous function haven no name.
+Anonymous function have no name.
 ```
 boot.user=> #(* % 3)
 3#object[boot.user$eval2105$fn__2106 0x6c94a7f5 "boot.user$eval2105$fn__2106@6c94a7f5"]
@@ -246,7 +246,21 @@ boot.user=> (break-map {:age 20})
 My name is 
 nil
 ```
+Returning functions
+```
+boot.user=> (defn inc-maker
+       #_=>   "Create a custom incrementor"
+       #_=>   [inc-by]
+       #_=>   #(+ % inc-by))
+#'boot.user/inc-maker
 
+^^^
+This function returns a function. The inner "returned" function will add the first argument (%) passed to it
+by inc-by. The value of inc-by is provided through the call to the "outer" function.
+
+boot.user=> (map (inc-maker 3) [1 2 3])
+(4 5 6)
+```
 
 ### FILE I/O
 ```
