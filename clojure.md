@@ -261,7 +261,31 @@ by inc-by. The value of inc-by is provided through the call to the "outer" funct
 boot.user=> (map (inc-maker 3) [1 2 3])
 (4 5 6)
 ```
-
+`let` allows you to define variables within a new scope.
+```
+boot.user=> (let [only2 (take 2 [9 7 3 2])]
+       #_=>   only2)
+(9 7)
+```
+This can also be written the following way. This is used to refer to the first and remaining
+elements of the vector.
+```
+boot.user=> (let [[felem & remelem] ["this" "is" "sparta"]]
+       #_=>   (do (println felem)
+       #_=>       (println remelem)))
+this
+(is sparta)
+nil
+```
+Recursive functions
+```
+(defn rec-trial
+  [x]
+  (if (> x 3)
+     (println "Goodbye!")
+     (do (println (str "Iteration " x))
+      (rec-trial (inc x)))))
+```
 ### FILE I/O
 ```
 (use 'clojure.java.io)
