@@ -313,6 +313,27 @@ boot.user=> (loop [x 10]
 2
 nil
 ```
+
+### Processing
+`reduce` processes each element in a sequence and builds a result.
+```
+boot.user=> (reduce + [1 2 3 4])
+10
+```
+`reduce` can also take an initial value. If it can't find one, it will apply the operation to the first
+two values in the collection.
+```
+boot.user=> (reduce + 15 [1 2 3 4])
+25
+```
+```
+boot.user=> (reduce
+       #_=>    (fn [acc-v x] (conj acc-v [x x x]))
+       #_=>    []
+       #_=>    [1 2 3])
+[[1 1 1] [2 2 2] [3 3 3]]
+```
+
 ### FILE I/O
 ```
 (use 'clojure.java.io)
