@@ -19,3 +19,8 @@ to get a final result.
 ![alt text](http://api.ning.com/files/-3i3rVffQH2bautHoYhtuyn-BhEFBMR3TNXJzACS9ATLysgH7VID6G3-DRqv65rcjsIwZ7riHJZ9rtS9XGWzIc326dpaeNvF/bor55.PNG)
 
 [Source: http://www.datasciencecentral.com/forum/topics/what-is-map-reduce]
+
+### Stateless
+Why stateless is good? Because if you have no state
+ * Servers are easier to replace with low system downtime
+ * Lesser chances of race-conditions
