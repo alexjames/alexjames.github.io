@@ -18,3 +18,15 @@ user=> (map :score [{:game "1" :score 33} {:game "2" :score 54} {:something-else
 (33 54 nil)
 
 ```
+### Functions
+```
+boot.user=> (def sum #(reduce + %))
+#'boot.user/sum
+boot.user=> (sum [4 2 4 5 6])
+21
+
+boot.user=> (def avg #(/ (sum %) (count %)))
+#'boot.user/avg
+boot.user=> (avg [1 2 3 4 3])
+13/5
+```
