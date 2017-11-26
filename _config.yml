@@ -1,13 +1,13 @@
 # Setup
 title:        Build Break
-tagline:      A site with a lot of notes!
+tagline:      Build, break, then build again. 
 baseurl:      ""
 paginate:     1
 
 # About/contact
 author:
   name:       Alex James
-  url:        http://yourhomepage.com 
+  url:        mailto:alx.james@gmail.com 
 
 # Gems
 gems:
