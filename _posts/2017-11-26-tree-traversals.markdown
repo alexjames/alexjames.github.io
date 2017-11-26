@@ -139,11 +139,45 @@ d   e
 
 Let's look at how the in-order recursion works. At a high-level, these are the steps:
 
+{% highlight ruby %} 
 inorder:
     recurse left
     process node
     recurse right
-
+{% endhighlight %}
+```
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> result;
+        stack<TreeNode *> s;
+        unordered_map<TreeNode *, bool> hm;
+        
+        if (root == NULL)
+            return result;
+        
+        TreeNode *p = root;
+        s.push(root);
+        while (!s.empty())
+        {
+            p = s.top();
+            if (p->left && !hm[p])
+            {
+                hm[p] = true;
+                s.push(p->left);
+            }
+            else
+            {
+                result.push_back(p->val);
+                s.pop();
+                if (p->right)
+                {
+                    s.push(p->right);
+                }
+            }
+        }
+        
+        return result;
+    }
+```
 
 
 
