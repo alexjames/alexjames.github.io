@@ -72,40 +72,7 @@ categories: cs
     }
 ```
 
-```
-    vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> result;
-        stack<TreeNode *> s;
-        
-        if (root == NULL)
-            return result;
-        
-        TreeNode *p = root;
-        while (true)
-        {
-            if (p)
-            {
-                s.push(p);
-                p = p->left;
-            }
-            else
-            {
-                if (s.empty())
-                {
-                    break;
-                }
-                p = s.top();
-                s.pop();
-                result.push_back(p->val);
-                p = p->right;
-            }
-        }
-        
-        return result;
-    }
-```
-
-If you were to translate the regular logic into code, you'd end up with something like this.
+When I first tried converting the recursion logic into code, I ended up with something like this.
 ```
         s.push(root);
         while (!s.empty())
@@ -126,8 +93,8 @@ If you were to translate the regular logic into code, you'd end up with somethin
             }
         }
 ```
-This doesn't work. You end up in an infinite loop. When you pop `d`, you read `b` again, which adds `d` back into the stack. This 
-will happen forever. This is problematic. How can we fix this?
+This doesn't work. You end up in an infinite loop. When we pop `d`, we read `b` again. 'b' has a left child (d), so we add `d` back 
+into the stack. This happens forever. Uh oh. How can we fix this?
 
 {% highlight ruby %} 
     a
@@ -137,14 +104,20 @@ will happen forever. This is problematic. How can we fix this?
 d   e
 {% endhighlight %}
 
-Let's look at how the in-order recursion works. At a high-level, these are the steps:
-
-{% highlight ruby %} 
+Let's look at how the in-order recursion works. At a high-level, this is what the recursion does:
+```
 inorder:
     recurse left
     process node
     recurse right
-{% endhighlight %}
+```
+First we recurse over the left sub-tree. Once we are done, we *process* the current node. Then we move onto the right sub-tree. <br>
+Logically, we *visit* a node the first time, then we move onto it's left sub-tree. This is the same as storing it on the stack, so that
+we can return to it later. When we do return, we want to *process* it, NOT traverse down it's left sub-tree again. We were just there!
+The problem now is how do we let the program know that it's already been down the left sub-tree? One way to do it is using a per node
+boolean, to keep track of whether or not we've been down that node's left sub-tree. Using a hashmap for this, we end up with code like 
+this:
+
 ```
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> result;
@@ -172,6 +145,40 @@ inorder:
                 {
                     s.push(p->right);
                 }
+            }
+        }
+        
+        return result;
+    }
+```
+There is a less intuitive way (at least to me) of doing this using a pointer that tracks the current node. The idea here is
+
+```
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> result;
+        stack<TreeNode *> s;
+        
+        if (root == NULL)
+            return result;
+        
+        TreeNode *p = root;
+        while (true)
+        {
+            if (p)
+            {
+                s.push(p);
+                p = p->left;
+            }
+            else
+            {
+                if (s.empty())
+                {
+                    break;
+                }
+                p = s.top();
+                s.pop();
+                result.push_back(p->val);
+                p = p->right;
             }
         }
         
