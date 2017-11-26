@@ -6,7 +6,7 @@ categories: cs
 ---
 
 ### Pre-order Traversal
-```
+```C++
     void preorder(vector<int> &v, TreeNode *root)
     {
         if (root == NULL)
@@ -126,7 +126,9 @@ If you were to translate the regular logic into code, you'd end up with somethin
             }
         }
 ```
-This doesn't work. You end up in an infinite loop. 
+This doesn't work. You end up in an infinite loop. When you pop `d`, you read `b` again, which adds `d` back into the stack. This 
+will happen forever. This is problematic. How can we fix this?
+
 {% highlight ruby %} 
     a
    / \
@@ -135,4 +137,10 @@ This doesn't work. You end up in an infinite loop.
 d   e
 {% endhighlight %}
 
-{% highlight ruby %} def print_hi(name) puts "Hi, #{name}" end print_hi('Tom') #=> prints 'Hi, Tom' to STDOUT. {% endhighlight %}
+Let's look at how the recursion works.
+
+recurse left
+process node
+recurse right
+
+
