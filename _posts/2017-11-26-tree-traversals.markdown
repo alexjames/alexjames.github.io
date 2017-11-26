@@ -6,7 +6,7 @@ categories: cs
 ---
 
 ### Pre-order Traversal
-```C++
+```
     void preorder(vector<int> &v, TreeNode *root)
     {
         if (root == NULL)
@@ -137,10 +137,13 @@ will happen forever. This is problematic. How can we fix this?
 d   e
 {% endhighlight %}
 
-Let's look at how the recursion works.
+Let's look at how the in-order recursion works. At a high-level, these are the steps:
 
-recurse left
-process node
-recurse right
+inorder:
+    recurse left
+    process node
+    recurse right
+
+
 
 
