@@ -104,3 +104,35 @@ categories: cs
         return result;
     }
 ```
+
+If you were to translate the regular logic into code, you'd end up with something like this.
+```
+        s.push(root);
+        while (!s.empty())
+        {
+            TreeNode *p = s.top();
+
+            if (p->left)
+            {
+                s.push(p->left);
+            }
+
+            s.pop();
+            result.push_back(p->val);
+
+            if (p->right)
+            {
+                s.push(p->right);
+            }
+        }
+```
+This doesn't work. You end up in an infinite loop. 
+```
+    a
+   / \
+  b   c
+ / \
+d   e
+```
+
+{% highlight ruby %} def print_hi(name) puts "Hi, #{name}" end print_hi('Tom') #=> prints 'Hi, Tom' to STDOUT. {% endhighlight %}
