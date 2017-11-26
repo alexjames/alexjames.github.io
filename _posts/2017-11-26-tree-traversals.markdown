@@ -127,12 +127,12 @@ If you were to translate the regular logic into code, you'd end up with somethin
         }
 ```
 This doesn't work. You end up in an infinite loop. 
-```
+{% highlight ruby %} 
     a
    / \
   b   c
  / \
 d   e
-```
+{% endhighlight %}
 
 {% highlight ruby %} def print_hi(name) puts "Hi, #{name}" end print_hi('Tom') #=> prints 'Hi, Tom' to STDOUT. {% endhighlight %}
