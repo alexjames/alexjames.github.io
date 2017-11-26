@@ -26,7 +26,7 @@ One of the main objectives of OOP is to stop unwanted modification of private da
 ### Map/Reduce "sandwhich"
 The `map` operation is like iterating through a list and applying a function to it. `reduce` cumulatively acts on a collection
 to get a final result. This image provides a good analogy for both. Here, your mapping function slices the ingredients and the
-reduce function combines all of the into a tasty sandwhich.
+reduce function combines all of them into a tasty sandwhich.
 Many flavors of FP don't provide explicit loop-like control flow statements. Instead, you rely on recursion and map-reduces to 
 achieve the same result. This takes a "while" to get used to. Pun intended.
 
