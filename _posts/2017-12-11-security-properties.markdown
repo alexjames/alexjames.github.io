@@ -16,7 +16,7 @@ Privacy means to keep your own information secret. For example, I want to keep m
 else. I will never provide any mechanism for anyone other than me to ever have access to this information. A 
 system that protects my age from other's accessing it provides me "privacy".
 
-Confidentiality is the obligation to keep someone else's information secret. For example, if X tell's me their phone number,
+Confidentiality is the obligation to keep someone else's information secret. For example, if X tells me their phone number,
 and I'm in an agreement with X to maintain confidentiality, I cannot reveal their phone number to anyone else.
 
 Secrecy is keeping limiting the number of "principles" who can access some information. This can be thought of as a more general
@@ -26,13 +26,17 @@ is being maintained, then no one can decipher what X and Y are talking about.
 ### Integrity
 Ensuring integrity means to assure that information has not been altered by unauthorized or unknown means. This doesn't necessarily
 mean that the information itself cannot be tampered with. It only means that if the information were to be tampered with, we had a
-mechanism to determine that this has occured.
+mechanism to determine that this has occurred.
 
 It's important to note here that integrity has nothing to do with secrecy. We may have systems where both properties hold, but
 they are by themselves, mutually exclusive. You could maintain the integrity of the string "TARTAN" such that if even a single
-character were modified, we would know that it has changed. But the string itself does not need to be a secret. 
+character was modified, we would know that it has changed. But the string itself does not need to be a secret. A harddisk may
+employ bit parity checks can ensure that data corruption is detectable.
 
 ### Availability
+Availability is the ability of a system to perform it's functions. If a system is under more load than it can handle, it may
+stop functioning correctly and we have the loss of availability. Attacks such as DOS (denial of service) target the availability
+property of a system.
 
 ### Anonymity
 Anonymity conceals the identity of a participant in a protocol. For example, if you write an anonymous review about a course
