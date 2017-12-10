@@ -67,3 +67,25 @@ at university, there is no way for your professor to figure out the review was b
 the review reveal your identity in any way, nor should the review that you wrote itself provide an indication as to who you really
 are. The onus of the second part completely lies on you. Thus, anonymity in a system can be hard to maintain if the user of the
 system themselves provide hints that could single them out.
+
+### An analogy
+Let's try to formulate a small analogy to tie all these properties together. Let's assume that the system is fool-proof for 
+simplicity. You are trying to enter a super secret government base. At the gate, the guard asks you for papers. You show them
+a document saying that you've been authorized to enter the base for a day by the General. The document is in some secret code
+so that the purpose of the document and who it belongs to is unknown. This maintains secrecy. 
+
+The guard says "I'll have that" and passes the paper into a scanner. The scanner verifies the integrity of the document so that the 
+guard knows that the document was not tampered with. For example, you didn't modify the it in such a way that it would allow you to
+enter the base on the 15th of December, instead of the 17th. The scanner reveals the un-encrypted contents of the document. The guard
+recognizes a seal in the contents as coming from the administrative office within the base. The document is now authenticated. The
+scanner itself is available so you can't jam the scanner or make it unusable.
+
+But anyone from the administrative office could have created this document, even someone not
+allowed to grant you access. How do we know that the General specifically oversaw this document? This is because the guard
+sees the General's signature on it. The general's identity is verified. The guard knows that when the
+General signed the document, the event was logged. So the General cannot deny having granted you access later. This is how
+non-repudiation is provided. "Hmmnnn" says the guard. 
+
+The document has your name and government ID number on it. The guard asks you for your ID card. You show it to them and they
+use it to verify your identity. You picture matches he picture in your ID card and your ID number matches that on the paper. 
+The guard finally says "Mr. X, you are now clear to enter our super secret base to do super secret things".
