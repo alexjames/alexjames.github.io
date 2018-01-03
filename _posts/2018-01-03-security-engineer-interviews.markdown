@@ -11,5 +11,8 @@ interviews for technical security positions. For the most part, I wasn't sure ab
 through "security interview questions", talked to friends who have interviewed for these positions before and created this list of popular
 questions and topics you're expected to know about. I have added my own answers to those questions. This is by no means an exhaustive list,
 nor are my answers complete. I'm documenting these primarily for my own reference. You'll likely be hired for your actual competence, than 
-your ability to regurgitate security jargon. But you don't want to be in a position where you can't recall how an XSS attack works.
+your ability to regurgitate security jargon. But you don't want to be in a position where you can't recall how an XSS attack works. A shout-out
+to @tnballo for helping me compile and clearly express some of these ideas.
 
+###### What is XSS?
+XSS stand for Cross-site scripting.
