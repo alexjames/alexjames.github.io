@@ -14,8 +14,12 @@ nor are my answers complete. I'm documenting these primarily for my own referenc
 your ability to regurgitate security jargon. But you don't want to be in a position where you can't recall how an XSS attack works. A shout-out
 to @tnballo for helping me compile and clearly express some of these ideas.
 
-##### What is XSS?
-XSS stand for Cross-site scripting.
+#### XSS - Attack and Defenses
+XSS stand for Cross-site scripting. An XSS vulnerability allows an attacker to inject malicious Javascript code into a web application and get
+it to execute on your browser. This vulnerability typically exists in web applications that will dynamically generate HTML content and the
+attacker provides input which results in executable HTML. For example, <script> tags which result in scripts being executed.
+
+Defenses are input validation
 
 
 
@@ -24,6 +28,6 @@ XSS stand for Cross-site scripting.
 
 
 
-##### Useful Links
+#### Useful Links
 https://exploit-exercises.com/
 https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project
