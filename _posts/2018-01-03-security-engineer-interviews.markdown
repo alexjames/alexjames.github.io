@@ -14,5 +14,16 @@ nor are my answers complete. I'm documenting these primarily for my own referenc
 your ability to regurgitate security jargon. But you don't want to be in a position where you can't recall how an XSS attack works. A shout-out
 to @tnballo for helping me compile and clearly express some of these ideas.
 
-###### What is XSS?
+##### What is XSS?
 XSS stand for Cross-site scripting.
+
+
+
+
+
+
+
+
+##### Useful Links
+https://exploit-exercises.com/
+https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project
