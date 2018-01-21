@@ -55,7 +55,8 @@ Thus, for CSRF defenses to work, it is usually imperative that you don't have an
 #### SQL Injection
 
 #### Differentiate between symmetric and asymmetric encryption
-
+Symmetric key algorithms use a single key for encryption and decryption. Asymmetric key algorithms use separate keys for 
+encryption and decryption. 
 
 
 
