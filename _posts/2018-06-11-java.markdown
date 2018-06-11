@@ -10,4 +10,7 @@ A quick Java recap. Mostly summarized from the Oracle Java trail.
 
 ## Object-oriented programming concepts
 ### Object
-An object is 
+An object is the software representation of an entity with it's state and associated behavior. State is stored in `fields` and
+behavior is accessed through `methods`.
+
+
