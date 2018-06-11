@@ -6,7 +6,7 @@ categories: cs
 ---
 
 # Java
-A quick Java recap. Mostly summarized from the Oracle Java trail.
+A quick Java recap. Mostly summarized from the Oracle Java trails.
 
 ## Object-oriented programming (OOP) concepts
 
@@ -60,6 +60,21 @@ class Man implements Human {
 }
 
 ```
+Once you implement an interface, the compiler will ensure that you implement all methods as specifed by the interface.
 
+### Packages
+A package is a namespace that organizes a set of related classes and interfaces.
 
+## Language Basics
+### Variables
+Java defines the following kinds of variables:
+ * Instance variable (non-static): unique to each instance of a class
+ * Class variable (static): Only one copy of this variable will ever exist and it's visibility spans all objects of the class
+ * Local variable: Only visibile within a method
+ * Parameters: passed as arguments to a function
+
+Java variable names are case-sensitive. Though permitted, variable names will typically NOT start with dollar($) or 
+underscore(\_). The variable naming convention is to use all lowercase for one-word variables such as 'age', 'height', 
+'sex', etc. and to capitalize subsequent words in case of two or more lettered words suchs as currentAge, maxPierLength,
+totalNumberOfGearsInBike.
 
