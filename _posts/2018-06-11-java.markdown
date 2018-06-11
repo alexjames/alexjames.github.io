@@ -8,9 +8,23 @@ categories: cs
 # Java
 A quick Java recap. Mostly summarized from the Oracle Java trail.
 
-## Object-oriented programming concepts
+## Object-oriented programming (OOP) concepts
 ### Object
-An object is the software representation of an entity with it's state and associated behavior. State is stored in `fields` and
-behavior is accessed through `methods`.
+Objects are the bed-rock of OOP. An object is the software representation of an entity with it's state and associated behavior.
+State is stored in `fields` and behavior is accessed through `methods`.
+
+### Class
+A class is the template used for creating an object. You use classes to instantiate objects.
+
+```
+public class Person {
+    String name;
+    int age;
+
+    void setName(String new_name){
+        name = new_name;
+    }
+}
+```
 
 
