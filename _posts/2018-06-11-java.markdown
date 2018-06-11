@@ -26,5 +26,14 @@ public class Person {
     }
 }
 ```
+### Inheritance
+Objects may be grouped together based on similarity in state and behavior. For example, mountain bikes, road bikes and 
+hybrid bikes are types of bikes. So you have all three classes share a lot of the common state and behavior of a class bike.
+Thus we can have `MountainBike` inherit from class `Bike`. Here, Bike is the superclass and MountainBike is the subclass.
+In Java, each subclass can have only one superclass. But a superclass can have an unlimited number of subclasses.
 
+```
+class MountainBike extends Bike {
 
+}
+```
