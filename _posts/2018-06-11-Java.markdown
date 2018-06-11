@@ -1,0 +1,13 @@
+---
+layout: default
+title:  "Java - Primer"
+date:   2018-06-11 09:09:00
+categories: cs
+---
+
+# Java
+A quick Java recap. Mostly summarized from the Oracle Java trail.
+
+## Object-oriented programming concepts
+### Object
+An object is 
