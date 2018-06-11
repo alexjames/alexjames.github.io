@@ -23,7 +23,7 @@ f1(f2())
 
 One of the main objectives of OOP is to stop unwanted modification of private data. With immutable data structures, this is not a concern anymore. Moreover, methods are tightly coupled with objects in OOP, reducing their re-usability. This is another advantage of functional programming.
 
-### Map/Reduce "sandwhich"
+### Map/Reduce "sandwich"
 The `map` operation is like iterating through a list and applying a function to it. `reduce` cumulatively acts on a collection
 to get a final result. This image provides a good analogy for both. Here, your mapping function slices the ingredients and the
 reduce function combines all of them into a tasty sandwhich.
