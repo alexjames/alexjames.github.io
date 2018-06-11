@@ -9,6 +9,7 @@ categories: cs
 A quick Java recap. Mostly summarized from the Oracle Java trail.
 
 ## Object-oriented programming (OOP) concepts
+
 ### Object
 Objects are the bed-rock of OOP. An object is the software representation of an entity with it's state and associated behavior.
 State is stored in `fields` and behavior is accessed through `methods`.
@@ -26,6 +27,7 @@ public class Person {
     }
 }
 ```
+
 ### Inheritance
 Objects may be grouped together based on similarity in state and behavior. For example, mountain bikes, road bikes and 
 hybrid bikes are types of bikes. So you have all three classes share a lot of the common state and behavior of a class bike.
@@ -37,3 +39,27 @@ class MountainBike extends Bike {
 
 }
 ```
+
+### Interface
+Interfaces act as a specification for classes. Typically, an interface is a group of related methods with no implementation.
+
+```
+interface Human {
+    void eat();
+    void sleep();
+}
+
+class Man implements Human {
+    void eat() {
+        hunger -= 50;
+    }
+    
+    void sleep() {
+        fatigue -= 80;
+    }
+}
+
+```
+
+
+
