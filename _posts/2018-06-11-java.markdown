@@ -67,7 +67,8 @@ A package is a namespace that organizes a set of related classes and interfaces.
 
 ## Language Basics
 ### Variables
-Java defines the following kinds of variables:
+Java is statically typed, thus all variables must be declared before use. The language defines the following kinds of
+variables:
  * Instance variable (non-static): unique to each instance of a class
  * Class variable (static): Only one copy of this variable will ever exist and it's visibility spans all objects of the class
  * Local variable: Only visibile within a method
@@ -78,3 +79,15 @@ underscore(\_). The variable naming convention is to use all lowercase for one-w
 'sex', etc. and to capitalize subsequent words in case of two or more lettered words suchs as currentAge, maxPierLength,
 totalNumberOfGearsInBike.
 
+Here are primitive data types are:
+
+Name | Size (bits) | Range
+--- | --- | ---
+byte | 8 | -128 to 127
+short | 16 | -32768 to 32767
+int | 32 | -2^31 to 2^31 - 1
+long | 64 | -2^61 to 2^61 - 1
+float | 32 | 32-bit IEEE floating point
+double | 64 | 64-bit IEEE floating point
+boolean | und. | true/false
+char | 16 | UTF-16
