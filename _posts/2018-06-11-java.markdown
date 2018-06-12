@@ -140,3 +140,57 @@ int[] arrTo = new int[5];
 int[] arrFrom = {1, 2, 3, 4, 5};
 System.arraycopy(arrFrom, 0, arrTo, 0, 5);
 ```
+### Operators
+Java has support for arithmetic, logical, bitwise and ternary operators with syntax and behavior similar to other 
+programming languages. There are separate signed (>>, <<) and unsigned (>>>, <<<) left/right shift operators.
+
+### Conditional Flow Statements
+if-blocks are similar to other languages.
+
+```
+if (isRaining) {
+    person.open_umbrella();
+} else if (isSunny) {
+    person.put_sunscreen();
+} else {
+    person.walk_outside();
+}
+```
+
+switch-blocks work for byte, short, char, int, enums, String and a few other wrapper types such as Byte, Integer, etc.
+```
+switch (day) {
+    case 1:
+        name = "alex";
+        break;
+    case 2:
+        name = "kevin";
+        break;
+    default:
+        name = "everybody else";
+        break;
+}
+
+switch (month) {
+    case "january":
+        monthNum = 1;
+    case "february":
+        monthNum = 2;
+}
+```
+for, while and do-while are the same as other languages.
+```
+for (int i = 0; i < 10; i++) {
+
+}
+
+while (true) {
+    // do stuff
+}
+
+
+do {
+    //stuff
+} while (count > 5);
+```
+continue, break and return behave as you would expect.
