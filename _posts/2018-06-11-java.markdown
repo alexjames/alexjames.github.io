@@ -194,3 +194,25 @@ do {
 } while (count > 5);
 ```
 continue, break and return behave as you would expect.
+
+## Classes and Objects
+This is the skeleton of what a class declaration looks like:
+
+```
+class MyClass {
+    // fields
+    // constructor
+    // method declarations
+}
+```
+Access modifiers for member variables are *public*, for visibility across all classes or *private*, for restricted 
+visibility within the same class. Default, when unspecified is ***public***.
+
+In terms of naming convenctions, classes have the first letter of every word capitalized. For example, MountainBike,
+MyClass, etc. Methods have the same naming convention as variables i.e. first word all lower-case followed by remanining
+words capitalized, except the first word should prefereably be a verb. For example, *showName()*, *getUserAge()*, etc.
+
+Methods can also be *overloaded*, i.e. the same method name can be used to perform different operations, and they are
+distinguised by their method signatures. So instead of having a separate methods like *walkDog()*, *walkCat()*, *walkPony()*,
+you can have a separate *walk()* methods taking in different parameters. Thus you have *walk(Dog d)*, *walk(Cat c)* etc.
+It's pretty easy for a compiler to figure out which method you intended to call. v
