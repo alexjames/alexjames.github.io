@@ -215,4 +215,12 @@ words capitalized, except the first word should prefereably be a verb. For examp
 Methods can also be *overloaded*, i.e. the same method name can be used to perform different operations, and they are
 distinguised by their method signatures. So instead of having a separate methods like *walkDog()*, *walkCat()*, *walkPony()*,
 you can have a separate *walk()* methods taking in different parameters. Thus you have *walk(Dog d)*, *walk(Cat c)* etc.
-It's pretty easy for a compiler to figure out which method you intended to call. v
+It's pretty easy for a compiler to figure out which method you intended to call. Note that return values are not checked
+as part of the signature by the compiler, so you can't have two methods with the same name but different return types.
+
+```
+This does NOT work:
+void setName(String new_name){}
+int setName(String new_name) {}
+```
+
