@@ -79,7 +79,8 @@ underscore(\_). The variable naming convention is to use all lowercase for one-w
 *sex*, etc. and to capitalize subsequent words in case of two or more lettered words suchs as *currentAge*, *maxPierLength*,
 *totalNumberOfGearsInBike*.
 
-Here are primitive data types are:
+Primitive data types are *literals* that are directly represented in source code, and are not objects created from a 
+class. These are Java's primitive data types:
 
 Name | Size (bits) | Range
 --- | --- | ---
@@ -91,3 +92,21 @@ float | 32 | 32-bit IEEE floating point
 double | 64 | 64-bit IEEE floating point
 boolean | und. | true/false
 char | 16 | UTF-16
+
+Java also support strings natively through the `java.lang.String` class, so they've come to be thought of as primitive 
+data types. Java strings are immutable, thus once created, their values cannot be changed.
+
+Variables that are not initialized are assigned a default value, usually 0 or null by the compiler. 
+The only exception are local variables, which will generate a compile-time error if you access them un-initialized.
+
+Here are example data-type declarations along with their associated literals:
+
+```
+int ten = 10;
+int hexval = 0x2a;
+int binary = 0b001101;
+double d = 123.4
+long l = 14324L;
+float f1 = 12.3f;
+```
+When unspecified, literals with a decimal point are double by default and those without are int be default.
