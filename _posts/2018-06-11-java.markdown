@@ -67,6 +67,7 @@ A package is a namespace that organizes a set of related classes and interfaces.
 
 ## Language Basics
 ### Variables
+#### Primitives
 Java is statically typed, thus all variables must be declared before use. The language defines the following kinds of
 variables:
  * Instance variable (non-static): unique to each instance of a class
@@ -110,3 +111,21 @@ long l = 14324L;
 float f1 = 12.3f;
 ```
 When unspecified, literals with a decimal point are double by default and those without are int be default.
+
+Java 7 onwards, you can now put underscores in between numbers for logical grouping/readability.
+```
+long whiteHousePhoneNumber = 202_456_1414;
+```
+
+#### Arrays
+An array is a container that holds a fixed number of elements of a certain type. They are accessed by a numerical index
+starting from 0..(N-1) where N is the number of elements. They are typically declared using *type[]*.
+```
+int[] myArray;
+int myArrayNotRecommended[];   // C-like, also allowed, but convention discourages it
+
+myArray = new int[3];
+...
+myArray[2] = 9;
+```
+
