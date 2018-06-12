@@ -129,3 +129,14 @@ myArray = new int[3];
 myArray[2] = 9;
 ```
 
+Arrays have a built-in `length` method to print their size. The `System` class has an `arraycopy` method which can be used
+to copy array elements from one array into another.
+
+```
+public static void arraycopy(Object src, int srcPos,
+                             Object dest, int destPos, int length)
+...
+int[] arrTo = new int[5];
+int[] arrFrom = {1, 2, 3, 4, 5};
+System.arraycopy(arrFrom, 0, arrTo, 0, 5);
+```
