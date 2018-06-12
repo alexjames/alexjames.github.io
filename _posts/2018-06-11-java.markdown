@@ -75,9 +75,9 @@ variables:
  * Parameters: passed as arguments to a function
 
 Java variable names are case-sensitive. Though permitted, variable names will typically NOT start with dollar($) or 
-underscore(\_). The variable naming convention is to use all lowercase for one-word variables such as 'age', 'height', 
-'sex', etc. and to capitalize subsequent words in case of two or more lettered words suchs as currentAge, maxPierLength,
-totalNumberOfGearsInBike.
+underscore(\_). The variable naming convention is to use all lowercase for one-word variables such as *age*, *height*, 
+*sex*, etc. and to capitalize subsequent words in case of two or more lettered words suchs as *currentAge*, *maxPierLength*,
+*totalNumberOfGearsInBike*.
 
 Here are primitive data types are:
 
