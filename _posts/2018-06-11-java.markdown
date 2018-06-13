@@ -356,4 +356,20 @@ You can have multiple static blocks in a class and the runtime gaurantees that t
 they appear in the class. Instead of a static block, if you have a regular block ({ }) in a class, they will be called
 in every constructor when an object is created. This can be used to share common code across multiple constructors.
 
+### Enums
+Enums allow the declaration of pre-defined constants. In Java, enums are basically classes which provide functions such
+as *values()*, which enumerates all available enumerated types.
+```
+public enum Day {
+    SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
+    THURSDAY, FRIDAY, SATURDAY 
+}
+
+System.out.println(Day.SUNDAY);
+```
+
+## Annotations
+TBD
+
+## Interfaces and Inheritance
 
