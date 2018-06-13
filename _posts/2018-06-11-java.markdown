@@ -224,3 +224,42 @@ void setName(String new_name){}
 int setName(String new_name) {}
 ```
 
+Constructors are invoked at the time of object creation. Constructors have the same name as the class with not return value.
+Java allows multiple constructors as long as they differ in their signature.
+
+```
+    Person() {        // no-argument constructor
+        name = "FNU";
+    }
+    
+    Person(String myName) {
+        name = myName;
+    }
+...
+Person p = new Person();
+Person q = new Person("Alex");
+```
+
+Java quirks: When a class doesn't have a constructor declared, the compiler will generate a default no-argument constructor
+which calls the default no-argument constructor of the superclass. If the superclass does not have a default constructor,
+the compiler will complain. In Java, by default, every class with no superclass has `Object` as it's implicit superclass. 
+`Object` DOES have a default constructor so you typically won't see this error. Thus, when creating base classes within
+your Java programs, make sure you have a default constructor, even if it doesn't do anything.
+
+Construtors have access specifiers dicatating who can access it's constructors. If a certain class cannot access any 
+constructor of a given class, it cannot instantiate objects of that given class.
+
+Methods (and constructors) can accept variable length arguments by defining the type of the ***last*** parameter of the method
+as *type...* (three dots). This converts the parameter into an array of the type and can be used like any regular array.
+
+```
+    void tryVarArgsMethod(int... intsArray) {
+        for (int x : intsArray) {
+            System.out.println(x);
+        }
+    }
+```
+
+Primitive data types are passed by *value*, and so are objects. However, the values of an object's fields can be changed by
+a method if it can access them.
+
