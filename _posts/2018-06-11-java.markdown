@@ -263,3 +263,97 @@ as *type...* (three dots). This converts the parameter into an array of the type
 Primitive data types are passed by *value*, and so are objects. However, the values of an object's fields can be changed by
 a method if it can access them.
 
+Objects are created using the `new` operator. `new` also invokes the constructor.
+
+```
+Point p = new Point(15, 234);    // stores a reference to a newly created Point object in variable p
+```
+JVM internally maintains references to objects and frees them up when they are no longer referenced. References are 
+decremented when a variable goes out of scope or you set the variable's value to null. All references to an object must
+be dropped before JVM can garbage collect the object.
+
+When a method returns a class name, the it can return an object of either the same class of subclass. But not it's superclass.
+For example, if Object -> Human -> Person and you have a method `Human getMammal()`, you can have the method return either
+a *Human* object or a *Person* object. This is because a *Person* is a kind of *Human*. But getMammal() cannot return an
+*Object*.
+
+The *this* keyword is used to refer to the current object. Constructors can have fields *shadowed* by a method or constructor
+parameter i.e. the fields of the class can have the same name as parameters. In such cases, *this* is used to resolve the
+ambiguity.
+
+```
+public class Person {
+    String name;
+    int age;
+
+    Person(String name) {   // parameter 'name' is the same as field 'name', field name is thus being shaddowed.
+        this.name = name;
+    }
+}
+```
+
+*this* can also be used from within a constructor to call another constructor of the same class.
+
+```
+public MyClass() {
+    this("default", 9);
+}
+
+public MyClass(String name, int size) {
+    // do stuff
+}
+```
+
+If a class is declared ***public***, it is accessible to classes everywhere. If a class is declared ***private*** or has no 
+modifier, it is only visible within the package where it is declared.
+
+If a member variable is ***public*** or has no modifier, it is accessible by everyone. If a member variable is ***private***,
+it can be accessed only within its own class. If a member variable is ***protected***, it can be accessible within its own
+package as well as by any subclass in another package.
+
+Quick summary: member variables are public by default, classes are private be default. Unless you have a good reason, most
+members should be private. 
+
+A static member variable has a single instance associated with it, while a static member function can be invoked without
+needing to create an object of a class. A method that is declared static is called a class method. Regular (non-static)
+methods are called instance methods. Since class methods are not associated with an object (an hence no memory actually
+allocated for them), they cannot directly access an object's instance variables or instance methods, unless they are passed
+by reference. Also, you cannot use the *this* keyword.
+
+Constants are declared using the *final* keyword and all upper-case letters by convention.
+```
+static final int NUMBER_OF_GEARS = 4;
+```
+
+The initialization of instance variables can be done directly in the class declaration or the constructor. However,
+considering the semantics of class variables, it is easy to see that if you wanted some complex initialization logic
+for these, you couldn't put them in any constructor. This is because constructors are invoked during object creation and
+static members or methods don't need an instance of an object to be invoked. So how does Java handle this? They provide
+*static initialization blocks* or alternatively, *private static* initialization methods.
+
+```
+public class Person {
+    static String species;
+    static int age = initStaticVars();  // call to private static method
+
+    static {                            // static block
+        if (true) {
+            species = "human";
+        } else {
+            species = "mammal";
+        }
+    }
+
+    private static int initStaticVars() {     // private static method used to initialize static members
+        int i;
+        for (i = 0; i < 10; i++);
+        return i;
+    }
+}
+```
+
+You can have multiple static blocks in a class and the runtime gaurantees that they will be called in the order in which
+they appear in the class. Instead of a static block, if you have a regular block ({ }) in a class, they will be called
+in every constructor when an object is created. This can be used to share common code across multiple constructors.
+
+
