@@ -7,5 +7,44 @@ categories: no
 
 This is a bare-bones Java program. I compiled this using `javac <filename>.java` and ran it using `java <filename>`.
 ```
+public class BareBones {
+
+    public static void main(String[] args) {
+    }
+}
+```
+
+If you add the `println` statement to this, it still complies and runs without issues.
+```
+public static void main(String[] args) {
+    System.out.println("Hello World");
+}
+```
+
+If you don't name a class after it's filename, Java complains. Now if you try putting in two public classes in the same file, the compiler
+complains about the other class. Probably cause they're both declare public.
+
+```
+public class BareBonesB {
+
+}
+
+public class BareBones {
+
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+
+RESULT: Compiler unhappy.
+BareBones.java:1: error: class BareBonesB is public, should be declared in a file named BareBonesB.java
+public class BareBonesB {
+       ^
+1 error
+```
+
+But if you get rid of the public accessor from the other class, it works. `public class BareBonesB`  becomes just `class BareBonesB`.
+
+```
 
 ```
