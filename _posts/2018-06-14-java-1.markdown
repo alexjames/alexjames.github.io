@@ -45,6 +45,26 @@ public class BareBonesB {
 
 But if you get rid of the public accessor from the other class, it works. `public class BareBonesB`  becomes just `class BareBonesB`.
 
+`main` is by definition a static method. So calling an instance method won't work.
+```
+public class BareBones {
+
+    public void doSomething() {
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+        doSomething();
+    }
+}
+
+RESULT: failure
+BareBones.java:9: error: non-static method doSomething() cannot be referenced from a static context
+        doSomething();
+        ^
+1 error
 ```
 
-```
+So in some sense, if you want to work in a single Java file, you are forced to make an object of another class and call its methods.
+Unless you only want to call other static methods from the class where main() is defined.
