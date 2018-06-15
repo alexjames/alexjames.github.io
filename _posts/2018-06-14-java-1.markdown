@@ -1,0 +1,11 @@
+---
+layout: default
+title:  "Java - Log #1"
+date:   2018-06-14 09:09:00
+categories: no
+---
+
+This is a bare-bones Java program. I compiled this using `javac <filename>.java` and ran it using `java <filename>`.
+```
+
+```
