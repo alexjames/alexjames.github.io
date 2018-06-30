@@ -368,6 +368,35 @@ public enum Day {
 System.out.println(Day.SUNDAY);
 ```
 
+### Inner Classes
+Java allows classes to have inner classes i.e. nested classes. As members of a class, nested classes may be declared static or
+non-static. Non-static nested classes can access members of the enclosing (outer) class, even those declared private. Static 
+nested classes cannot access member variables of the enclosing class.
+
+```
+class OuterClass {
+
+    InnerClass in;
+
+    public class InnerClass {
+
+        static void doInnerStuff() {
+            System.out.println("yay!");
+        }
+    
+    }
+
+    void doOuterStuff() {
+
+        InnerClass in = new InnerClass();
+        in.doStuff();
+    }
+
+}
+```
+Why use inner classes? For cases when you have a class that will only ever be used by one other class. This allows encapsulation 
+and has the added benefit of accessiblity of the private members of the enclosing class.
+
 ## Annotations
 TBD
 
