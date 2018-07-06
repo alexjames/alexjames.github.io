@@ -372,7 +372,7 @@ System.out.println(Day.SUNDAY);
 Java allows classes to have nested classes. Why use nested classes? For cases when you have a class that
 will *only* ever be used by one other class. This allows encapsulation and has the added benefit of accessiblity of the private
 members of the enclosing class.
-As members of a class, nested classes may be declared static or non-static. Non-static nested classes can access members of
+As members of a class, nested classes may be declared static or non-static ("inner"). Non-static nested classes can access members of
  the enclosing (outer) class, even those declared private. Static nested classes cannot access member variables of the
  enclosing class.
 
@@ -418,6 +418,13 @@ Test.NestedClass n = new Test.NestedClass();    // WORKS if NestedClass is stati
 Test.NestedClass n = new Test.NestedClass();    // DOESN'T work.  error: an enclosing instance 
                                                            that contains Test.NestedClass is required
 ```
+
+There are two additional types of inner classes. Those declared within the body of a method are called local classes.
+Those declared within the body of a method without naming the class are called anonymous classes.
+
+### Local classes
+
+### Anonymous Classes
 
 ## Annotations
 TBD
