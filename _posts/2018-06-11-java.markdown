@@ -15,7 +15,7 @@ Objects are the bed-rock of OOP. An object is the software representation of an 
 State is stored in `fields` and behavior is accessed through `methods`.
 
 ### Class
-A class is the template used for creating an object. You use classes to instantiate objects.
+A class is the template used for creating an object. It forms the blueprint of an object. You use classes to instantiate objects.
 
 ```
 public class Person {
@@ -368,10 +368,13 @@ public enum Day {
 System.out.println(Day.SUNDAY);
 ```
 
-### Inner Classes
-Java allows classes to have inner classes i.e. nested classes. As members of a class, nested classes may be declared static or
-non-static. Non-static nested classes can access members of the enclosing (outer) class, even those declared private. Static 
-nested classes cannot access member variables of the enclosing class.
+### Nested Classes
+Java allows classes to have nested classes. Why use nested classes? For cases when you have a class that
+will *only* ever be used by one other class. This allows encapsulation and has the added benefit of accessiblity of the private
+members of the enclosing class.
+As members of a class, nested classes may be declared static or non-static. Non-static nested classes can access members of
+ the enclosing (outer) class, even those declared private. Static nested classes cannot access member variables of the
+ enclosing class.
 
 ```
 class OuterClass {
@@ -394,8 +397,27 @@ class OuterClass {
 
 }
 ```
-Why use inner classes? For cases when you have a class that will only ever be used by one other class. This allows encapsulation 
-and has the added benefit of accessiblity of the private members of the enclosing class.
+
+A nested class is a member of its enclosing class. Static nested classes are more restrictive in what they can do and hence
+more isolated. In terms of design, you start out with a static nested class and then decide if you want to make it non-static.
+
+In terms of reasoning about memory allocation, you can directly instantiate a static nested class since it will never
+access any of the outer class's memory anyway. But you cannot instantiate a non-static nested class directly since it
+needs the outer class to have been allocated as well.
+
+```
+public class Test{
+	int a;
+
+	class NestedClass{
+		String lol = "inside!";
+	}
+}
+
+Test.NestedClass n = new Test.NestedClass();    // WORKS if NestedClass is static.
+Test.NestedClass n = new Test.NestedClass();    // DOESN'T work.  error: an enclosing instance 
+                                                           that contains Test.NestedClass is required
+```
 
 ## Annotations
 TBD
