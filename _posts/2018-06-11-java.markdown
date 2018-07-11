@@ -431,3 +431,11 @@ TBD
 
 ## Interfaces and Inheritance
 
+## Exceptions
+When an error occurs within a method, it can create an object and hand it over to the runtime detailing the problem. Since
+this is object oriented programming, even exceptions are objects. The exception object contains information about the type of
+error and the state of the program at the time the error occured.
+When the runtime encouters an exception, it looks through the current call stack in reverse order, looking for a handler for the
+exception. A handler match is found if the type of exception matches the type that can be handled by the handler. The object is
+then passed to this handler to process. The exception handler catches the exception and begins execution. If the runtime cannot
+find this an appropriate handler, the execution of the program is stopped.
