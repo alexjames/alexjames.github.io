@@ -424,7 +424,33 @@ Those declared within the body of a method without naming the class are called a
 
 ### Local classes
 
+```
+public class BareBones {
+
+    public static void local_class() {
+        class ThisIsLocal{
+             int return4() {
+                return 4;
+            }
+        }
+
+        ThisIsLocal l = new ThisIsLocal();
+        System.out.println(l.return4());
+    }
+
+
+    public static void main(String[] args) {
+        OuterClass out = new OuterClass();
+        out.doOuterStuff();
+        local_class();
+    }
+}
+```
+Local classes have access to member variables of the enclosing class visible inside the method they are declared in. They can also
+access local variables declared final within the body of the method. Local classes cannot declare any static members.
 ### Anonymous Classes
+If you have to use a local class only once, you can make use of an anonymous class. Anonymous classes are expressions and not
+declarations, so they are used as part of expressions. Local classes cannot contain interfaces.
 
 ## Annotations
 TBD
