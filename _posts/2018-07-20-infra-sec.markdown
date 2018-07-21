@@ -15,6 +15,8 @@ Here are our goals:
 What are the things we want to protect? In 2018, this probably means your production servers, corporate laptops and physical
 hardware on-site.
 
-### Ways of accomplishing this
+### Ways of Accomplishing This
+ * Firewalls
  * VPN
- * Proxies
+ * Proxies (forward and reverse)
+ * SSH
