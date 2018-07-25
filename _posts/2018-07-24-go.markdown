@@ -1,0 +1,13 @@
+---
+layout: default
+title:  "Exploring Go"
+date:   2018-07-24 09:09:00
+categories: cs
+---
+
+Go is a modern langauge that is steadily gaining in popularity. The language was designed at Google by heavy-weights such as Ken Thompson
+and Rob Pike of Plan 9 fame. This is one of the languages I've had to pickup at my new job, so I took the opportunity to learn more about 
+the language.
+
+  * Types
+ 
