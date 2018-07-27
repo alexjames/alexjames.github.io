@@ -480,10 +480,17 @@ public class Anon {
 Sometimes, you need functionality for limited use in a small scope. Anonymous classes might be overkill for say a single function.
 Enter lambdas. The fundamental premise with lambdas are that you pass functions as arguments to another function OR 'code as data'.
 
+## Interfaces and Inheritance
+Interfaces are like contracts that implementing classes have to adhere to. In Java, an interface is a reference type, 
+similar to a class, that only contains constants, method signatures, static/default methods and nested types. Interfaces
+cannot be instantiated - only implemented by other classes. And they can only be extended by other interfaces. This makes
+sense since an interface is basically a specification and you want the ability for specification to be built on top of 
+other specifications.
+
+
 ## Annotations
 TBD
 
-## Interfaces and Inheritance
 
 ## Exceptions
 When an error occurs within a method, it can create an object and hand it over to the runtime detailing the problem. Since
