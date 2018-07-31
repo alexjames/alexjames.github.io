@@ -76,7 +76,7 @@ variables:
  * Parameters: passed as arguments to a function
 
 Java variable names are case-sensitive. Though permitted, variable names will typically NOT start with dollar($) or 
-underscore(\_). The variable naming convention is to use all lowercase for one-word variables such as *age*, *height*, 
+underscore(\_). The method and variable naming convention is to use all lowercase for one-word variables such as *age*, *height*, 
 *sex*, etc. and to capitalize subsequent words in case of two or more lettered words suchs as *currentAge*, *maxPierLength*,
 *totalNumberOfGearsInBike*.
 
@@ -205,10 +205,22 @@ class MyClass {
     // method declarations
 }
 ```
-Access modifiers for member variables are *public*, for visibility across all classes or *private*, for restricted 
-visibility within the same class. Default, when unspecified is ***public***.
+Access modifiers determine the visibility of classes, interfaces and members. Here are the two levels that are available:
+ * top level (class/interface declaration) - public or package-private (default, no explicit modifier)
+ * member level (within class or interface) - public, private, protected and package-private (default, no explicit modifier)
 
-In terms of naming convenctions, classes have the first letter of every word capitalized. For example, MountainBike,
+`public` means pretty much any class anywhere within or outside the package can access an element. `private` means only within
+a class or interface. No explicit modifier implies pacakge-private which means any class within a package has access.
+The only tricky one is `protected`. Protected variables are accessible completely within a package (same as package-private),
+and in addition, are also visible by *any subclass in another package*. This means that within a package, any member that
+is not `private` is accessible to all anyway. But marking a member as `protected` allows a *public* class being inherited to
+have that member accessible to its subclass which lies in another package.
+This has several implications. When you're sitting in one package and decide to inherit (extend) a class from another package,
+you can't access *anything* of the super-class unless it is marked as either `public` or `protected`. When no access modifier
+is specified, you be at peace knowing that nothing outside your package can interfere with your business. `public` should 
+probably be used sparingly. At the top level, you can only specify "inside this package" or "outside this package".
+
+In terms of naming conventions, classes have the first letter of every word capitalized. For example, MountainBike,
 MyClass, etc. Methods have the same naming convention as variables i.e. first word all lower-case followed by remanining
 words capitalized, except the first word should prefereably be a verb. For example, *showName()*, *getUserAge()*, etc.
 
@@ -272,7 +284,7 @@ JVM internally maintains references to objects and frees them up when they are n
 decremented when a variable goes out of scope or you set the variable's value to null. All references to an object must
 be dropped before JVM can garbage collect the object.
 
-When a method returns a class name, the it can return an object of either the same class of subclass. But not it's superclass.
+When a method returns a class name, the it can return an object of either the same class or subclass. But not it's superclass.
 For example, if Object -> Human -> Person and you have a method `Human getMammal()`, you can have the method return either
 a *Human* object or a *Person* object. This is because a *Person* is a kind of *Human*. But getMammal() cannot return an
 *Object*.
@@ -315,7 +327,7 @@ Quick summary: member variables are public by default, classes are private be de
 members should be private. 
 
 A static member variable has a single instance associated with it, while a static member function can be invoked without
-needing to create an object of a class. A method that is declared static is called a class method. Regular (non-static)
+needing to create an object of the class. A method that is declared static is called a class method. Regular (non-static)
 methods are called instance methods. Since class methods are not associated with an object (an hence no memory actually
 allocated for them), they cannot directly access an object's instance variables or instance methods, unless they are passed
 by reference. Also, you cannot use the *this* keyword.
@@ -487,6 +499,10 @@ cannot be instantiated - only implemented by other classes. And they can only be
 sense since an interface is basically a specification and you want the ability for specification to be built on top of 
 other specifications.
 
+```
+
+
+```
 
 ## Annotations
 TBD
