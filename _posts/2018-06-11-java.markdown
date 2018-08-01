@@ -598,6 +598,33 @@ a.bones = 5;                  // Animal's bones
 a.instanceMethod();           // Dog's instance method
 ```
 
+You can use `super` to invoke the constructor of the superclass. It must be the first line of the subclass constructor. You 
+can also use the `super` keyword to refer to methods in the superclass.
+```
+@Override
+void doStuff () {
+	super.doStuff();    // resolve ambiguity as to which doStuff() you're calling.
+
+}
+```
+
+If you do not explcitly all a superclass constructor, the default constructor of the superclass is called in the first line
+of the subclass constructor. This ensures that the base class object is created and initialiazed before any derived class code
+is run. This happens through the entire chain of inheritance, all the way upto `Object`, which all classes extend. 
+
+If you put a final next to a method, it cannot be overridden. A class that is defined final cannot be inherited from. It's
+good practice to declare all methods called by constructors final, so that subclasses don't override them and produce 
+un-intended behavior.
+
+Abstract classes are classes that cannot be instantiated, but can be inherited from. Abstract methods have no function body,
+but must be defined in the inheriting subclasses. They are effectively like interfaces, except with more control in terms of
+defining the visibilty of members, and declaring non-static/non-final fields.
+
+```
+public abstract class AbstractClassExample {
+	abstract private void doStuff();
+}
+```
 
 ## Annotations
 TBD
