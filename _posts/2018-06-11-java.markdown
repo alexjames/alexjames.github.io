@@ -542,6 +542,32 @@ or `static`. `default` methods are actually implemented in the interface and all
 needing them to be recompiled. `static` methods in interface are like static methods in classes - associated with the
 interface.
 
+Inheritance permits re-use of code. The subclass (or child class or derived class) inherits from the superclass (or base class
+or parent class). Methods and members of the superclass are inherited by the subclass, but not the constructors. Though the
+superclass's constructor can be invoked exlicitly by using `super`.
+
+Because the subclass contains (or overrides all the behavior of the superclass), a reference to the superclass can point
+to an object of the type of the subclass. But you can't do it backwards. Similarly, if Animal --> Cat, and a function
+has a return type of Animal, you can also return back a Cat. This is because a Cat is an Animal i.e. a subclass is basically
+a version its superclass. 
+
+```
+Object obj = new HybridBike();  // this works
+
+HybridBike b = obj;             // this does NOT work, an object is not necessarily a HybridBike
+
+// Workaround:
+if (obj instanceof HybridBike) {
+	HybridBike b = (HybridBike) obj; 
+}
+```
+
+An instance method in a subclass with the same signature as the superclass *overrides* the superclass's method. When you
+expect a method you've written to override a method from the superclass, you can make use of the @Override annotation.
+This annotation will check if you actually overrode a method or not. You could hit this sort of issue if you, for instance,
+had an incorrect signature and thought you were overriding a baseclass method, but actually didn't. The @Override annotation
+does a compile time check to ensure that there is actually a superclass whose method gets overridden by your method.
+
 
 ## Annotations
 TBD
