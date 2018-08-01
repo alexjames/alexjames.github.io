@@ -568,6 +568,36 @@ This annotation will check if you actually overrode a method or not. You could h
 had an incorrect signature and thought you were overriding a baseclass method, but actually didn't. The @Override annotation
 does a compile time check to ensure that there is actually a superclass whose method gets overridden by your method.
 
+Fields and static methods in a subclass with the same signature as the superclass gets *hidden* from the superclass's method.
+The difference between getting overridden and hidden is that an overridden method or field is always the one in the subclass.
+While, the hidden member that is referenced depends on the type of reference being made to the object i.e. subclass or 
+superclass.
+
+```
+class Animal {
+	public int bones;
+	public static void staticMethod();
+	public void instanceMethod();
+}
+
+class Dog extends Animal {
+	public int bones;
+	public static void staticMethod();
+	public void instanceMethod();
+}
+
+
+Dog d = new Dog();
+d.staticMethod();             // Dog's static method
+d.instanceMethod();           // Dog's instance method
+d.bones = 5;                  // Dog's bones
+
+Animal a = new Dog();
+a.staticMethod();             // Animal's static method
+a.bones = 5;                  // Animal's bones
+a.instanceMethod();           // Dog's instance method
+```
+
 
 ## Annotations
 TBD
