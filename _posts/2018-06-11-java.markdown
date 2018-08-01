@@ -497,12 +497,30 @@ Interfaces are like contracts that implementing classes have to adhere to. In Ja
 similar to a class, that only contains constants, method signatures, static/default methods and nested types. Interfaces
 cannot be instantiated - only implemented by other classes. And they can only be extended by other interfaces. This makes
 sense since an interface is basically a specification and you want the ability for specification to be built on top of 
-other specifications.
+other specifications. Unlike classes, which can only extend a single class, interfaces can extend multiple interfaces at
+once.
 
 ```
+interface MySpec {
+	int someValue = 5;
+	void someFunction();
+}
+```
+Members of an interface can only be public (there's no point of them being private or protected, these are
+specifications!).
 
+When you define an interface, you are essentially defining a new type. This type can used in many interesting ways.
+Here is an interface for a class for V8 engines. This defines a function that *compareHP* which compares the horse-power
+of two different cars, both of which have V8 engines (implement the V8 spec).
 
 ```
+interface V8 {
+	int numCylinders = 8;
+	void makeNoise();
+	int compareHP(V8 car1, V8 car2);
+}
+```
+
 
 ## Annotations
 TBD
