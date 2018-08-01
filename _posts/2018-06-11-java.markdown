@@ -498,7 +498,7 @@ similar to a class, that only contains constants, method signatures, static/defa
 cannot be instantiated - only implemented by other classes. And they can only be extended by other interfaces. This makes
 sense since an interface is basically a specification and you want the ability for specification to be built on top of 
 other specifications. Unlike classes, which can only extend a single class, interfaces can extend multiple interfaces at
-once.
+once. Interfaces are meant to declare public interfaces, thus all members are implicitly `public`.
 
 ```
 interface MySpec {
@@ -520,6 +520,27 @@ interface V8 {
 	int compareHP(V8 car1, V8 car2);
 }
 ```
+Any class (or it's subclass) that implements the V8 spec can be passed as parameters to *compareHP*. Any of car1 or car2
+objects can be used to invoke members of the interface. For example, *car1.numCylinders* or *car2.makeNoise()*. 
+Similarly, you can also type cast car1 or car2 to an object of a type that implements an interface.
+```
+class FordMustang implements V8 {
+}
+
+class DodgeCharger implements V8 {
+}
+
+...
+V8 car1 = new FordMustang();
+FordMustang c1 = (FordMustang) car1;
+DodgeCharger d1 = (DodgeCharger) car1; // does NOT work, runtime exception!
+
+// You still need to ensure you pass the right object type into the right place
+```
+Intefaces have their methods declared as abstract by default. However, you can also change their declaration to `default`
+or `static`. `default` methods are actually implemented in the interface and allow interfaces to be extended without 
+needing them to be recompiled. `static` methods in interface are like static methods in classes - associated with the
+interface.
 
 
 ## Annotations
