@@ -9,5 +9,32 @@ Go is a modern langauge that is steadily gaining in popularity. The language was
 and Rob Pike of Plan 9 fame. This is one of the languages I've had to pickup at my new job, so I took the opportunity to learn more about 
 the language.
 
-  * Types
+Types
+
+UTF-8 Encoding: all the characters of source code are UTF-8 encoding. This means you can write something like this in
+source code:
+```
+  fmt.Print("你好，世界")
+```
+   
+```
+import main
+
+package "fmt"
+
+func main() {
+    fmt.Print("Hello World!")
+}
+```
  
+ In Go, a type implements an interface by defining the required methods.
+ 
+ Go programs are composed of packages. Every program's main method is in the *main* package.
+ 
+ The general syntax for a Go function is as follows:
+
+```
+func function_name([list of parameters]) [return_types] {
+    // function body 
+}
+```
