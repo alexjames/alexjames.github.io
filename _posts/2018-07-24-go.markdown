@@ -53,4 +53,22 @@ func main() {
 }
 ```
 
+```
+package main
 
+import "fmt"
+
+func main() {
+	// declaring a variable with its type
+	var val5 int
+	val5 = 5
+
+	// declaring a variable without type
+	var abc = 5
+
+	// prints variables in space-separated format
+	fmt.Print(abc, val5)
+}
+```
+
+Go only has one loop construct - the `for` loop.
