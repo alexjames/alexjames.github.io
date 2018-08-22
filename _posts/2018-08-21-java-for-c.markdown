@@ -5,6 +5,17 @@ date:   2018-08-21 20:56:00
 categories: cs
 ---
 
+A JAR is a Java Archive which is a ZIP with UTF-8 filenames that stores all the classes of an application or a library. 
+
+A WAR file is a "Web Application Archive" which is basically a JAR containing all the files a web application
+needs to run. A WAR may be structured as:
+```
+index.html
+myapp.jsp
+WEB-INF/classes/MyApp.class
+WEB-INF/web.xml
+```
+
 Packages are separated organized into separate folders and files so that there is a clear delineation of namespace.
 
 
