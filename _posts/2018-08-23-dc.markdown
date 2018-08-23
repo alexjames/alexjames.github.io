@@ -1,0 +1,18 @@
+---
+layout: default
+title:  "Datacenters: Architecture and Design"
+date:   2018-08-23 09:09:00
+categories: cs
+---
+
+Datacenters are the powerhouse of the information age. They constitute the physical servers on which all major 
+computation and storage needed by today's websites, mobile apps and web services occur.
+
+
+# Architecture
+
+
+
+References:
+
+[1] https://www.google.com/about/datacenters/
