@@ -6,10 +6,10 @@ categories: excursions
 ---
 
 A simple web server is just a process that is running on a remote machine with an open socket, listening in on
-incomming requests and serving responses to those. If this type of content you get back changes based on the
+incomming requests and serving responses for them. If you get back different content based on the
 sort of request, we say that the application is a web application. For instance, based on your request, you 
-may get back an image or a webpage or have the content change. Most web pages served through popular websites
-on the internet such as news, social networking and media-hosting websites tend to be dynamic.
+may get back an image or a web page or have the content of the page change. Most web pages served through popular 
+websites on the internet such as news, social networking and media-hosting websites tend to be dynamic.
 
 CGI (Common Gateway Interface) is one way of having processes generate and serve dynamic content. The idea is
 that the webserver will execute a script writen in PERL, Python, PHP, etc, which contains all the logic. This
@@ -19,9 +19,9 @@ They run on Java, thus having access to all of Java's libraries and its inherent
 run in the address space of the webserver, thus providing better performance. Servlets are built to be secure by
 carefully managing access to resources on the server.
 
-We have a container that manages the execution of servlets. Containers follow a multi-threaded paradigm.
-The container opens a socket and listens to incomming requests. It initializes the servlet and spawns a thread 
-that services the request. Jetty and Tomcat are examples of servlet containers.
+We have a container that manages the execution of servlets. Requests can be handled in a single-threaded or 
+multi-threaded paradigm. The container opens a socket and listens to incomming requests. It initializes the 
+servlet and spawns a thread that services the request. Jetty and Tomcat are examples of servlet containers.
 
 The servlet creates two objects: `HTTPServletRequest` and `HTTPServletResponse`. The request is read through
 `HTTPServletRequest` and the response is written back to the client through the `HTTPServletResponse`. When a 
