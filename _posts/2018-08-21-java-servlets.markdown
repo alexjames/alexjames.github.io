@@ -33,6 +33,8 @@ Web modules have a fixed format. They contain a WEB-INF directory that contain t
 in the `classes` folder, the required libraries in the `lib` folder and a deployment description containing 
 deployment info in a *web.xml* file. These files are tyipcally packaged into a single archive known as a WAR.
 
+The container maintains a pool of threads. Each request is assigned a thead on-demand.
+
 References:
 
 [1] https://www.studytonight.com/servlet/how-a-servlet-application-work.php
