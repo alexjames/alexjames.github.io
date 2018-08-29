@@ -18,4 +18,41 @@ WEB-INF/web.xml
 
 Packages are separated organized into separate folders and files so that there is a clear delineation of namespace.
 
+Java references behave a lot like C pointers. It's logically the equivalent to JVM doing the dereferencing for you.
+The main differences between C pointers and Java references are:
+ * Java references may not point to actual memory addresses. JVM might implement an additional layer of indirection, at which
+ point you may no longer be pointing to a location in memory, but to an index or map or anything else!
+ * Because these may not be real memory addresses, you cannot do pointer arithmetic. Pointer arithmetic is not supported by
+ Java references.
+ * References are strongly typed, and so you cannot perform type-casting to convert one kind of reference to another.
 
+```
+	public static void main (String[] args) {
+		System.out.println("before");
+		B b1 = new B();
+		B b2 = b1;
+		b1.val = 5;
+		System.out.println(b1.val);
+		System.out.println(b2.val);
+		System.out.println("now");
+		b1 = new B();
+		System.out.println(b1.val);
+		System.out.println(b2.val);
+		
+	}
+
+	private static class B {
+		int val;
+		B () {
+			val = 0;
+		}
+	}
+  
+OUTPUT:
+before
+5
+5
+now
+0
+5
+```
