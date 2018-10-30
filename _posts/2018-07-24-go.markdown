@@ -94,4 +94,45 @@ func main() {
 }
 ```
 
+
+```
+func main() {
+	var a int32 = 5
+	var str string = "Alex"
+	
+	// Print the data type. Printf makes sure there is no new line at the end
+	fmt.Printf("%T\n", a)
+	
+	// Print the length of the string
+	fmt.Print(len(str))
+}
+```
+
 Go only has one loop construct - the `for` loop.
+
+```
+func main() {
+	i := 1
+
+	for i <= 10 {
+		fmt.Println(i)
+		i++
+	}
+
+	for j:=1; j <= 10; j++ {
+		fmt.Println(j)
+	}
+	
+	your_age := 15
+	
+	if your_age < 20 {
+		fmt.Println("Too young!")
+	} else if your_age == 20 {
+		fmt.Println("Just right!")
+	} else {
+		fmt.Println("Too old!")
+	}
+}
+
+
+```
