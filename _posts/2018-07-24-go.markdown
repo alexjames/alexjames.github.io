@@ -133,6 +133,21 @@ func main() {
 		fmt.Println("Too old!")
 	}
 }
+```
 
-
+Initializing and iterating through Arrays. Arrays are indexed from 0.
+```
+func main() {
+	var favNum [5]int
+	favNum[0] = 5
+	fmt.Println(favNum[0])
+	
+	initFavNum := [5]int {1, 2, 3, 4, 5}
+	fmt.Println(initFavNum[0])
+	
+	// i will index from 0
+	for i, value := range initFavNum {
+		fmt.Println(i, value)
+	}
+}
 ```
