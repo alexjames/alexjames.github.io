@@ -11,7 +11,7 @@ the language.
 
 Types
 
-UTF-8 Encoding: all the characters of source code are UTF-8 encoding. This means you can write something like this in
+UTF-8 Encoding: all the characters of source code in UTF-8. This means you can write something like this in
 source code:
 ```
   fmt.Print("你好，世界")
@@ -37,7 +37,14 @@ func main() {
 func function_name([list of parameters]) [return_types] {
     // function body 
 }
+```
+This is interesting because in popular languages, you have the return type specified before the function name. While reading
+from left to right, this makes for harder reading. For instance, `int myfunction(int x)`, when read from left to right
+reads as "an integer return type for a function named myfunction that takes an integer as a parameter". Having it formatted 
+the way Go does makes faster to gain context while reading a function header. "func myfunction(a int) int becomes "a function
+named myfunction that takes an integer argument and returns an integer". The flow is arguably more natural.
 
+```
 
 // Simple function that adds two numbers
 package main
