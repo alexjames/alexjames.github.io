@@ -16,6 +16,15 @@ source code:
 ```
   fmt.Print("你好，世界")
 ```
+
+
+
+Go's integer types are `uint8`, `uint16`, `uint32`, `uint64`, `int8`, `int16`, `int32` and `int64`. This take away any ambiguity about size
+from data types in other langauges such as long, short, etc which can vary depending on the architecture.
+
+Floating points is `float32` and `float64`. The other basic types are `string` and `bool`.
+
+
    
 ```
 import main
@@ -66,12 +75,19 @@ package main
 import "fmt"
 
 func main() {
+
+	/* Multi-line comments
+	 */
+
 	// declaring a variable with its type
 	var val5 int
 	val5 = 5
 
 	// declaring a variable without type
-	var abc = 5
+	var val5 = 5
+	
+	// declaring without specifying var
+	val5 := 5
 
 	// prints variables in space-separated format
 	fmt.Print(abc, val5)
