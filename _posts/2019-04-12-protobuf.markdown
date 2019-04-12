@@ -5,11 +5,12 @@ date:   2019-04-12 14:10:00
 categories: cs
 ---
 
+# Proto-who?
+
 When you interact with a web application, there are two primary kinds of data transfers that happen. One is the transfer of
 data from the user (or client) to the server. The other is between servers.
 
 The considerations you have to make while deciding how to send data over the wire are:
-  * Transmission medium
   * What protocol to use?
   * What format should the data be in?
   * Size and efficiency of the data being transmitted
@@ -44,12 +45,30 @@ The same data expressed in XML would look like:
 </menu>
 ```
 
-As we can see, this form of data transfer, while great for readability, is terrible for efficiency. Transmitting data over
+As we can see, this form of data transfer, while great for readability, is terrible for efficiency. This is not a great way 
+for communication between server processes, which usually need to work as fast as possible. Transmitting data over
 the network is an expensive operation and you want to try to get more done with less. This is where Protocol Buffers come in.
 Protobufs were created by Google back in 2008 as a way of serializing structured data for transmission and storage. This is
 designed for server to server communication to make it as efficient as possible, while being language neutral. Languages such
 as C++, Java, Python etc. have several libraries for marshalling and de-marshalling data and Protobufs were a way to
 standardize this across various platforms.
+
+# Designing Protobufs
+How do we go about designing an efficient data transfer mechanism? Given a fixed data format, the goal is to come up with as
+small a representation for the data (in terms of bytes) as possible. JSON and XML data can be viewed as key-value pair records,
+and that's the kind of data we'll try to transmit here.
+
+When you're trying to encode a key-value pair, you have two options. You either encode both the key and the value. This ensures
+that the receiver does not need to have any information before-hand about how to decode the data. This comes at the cost of 
+transmitting extra data over the network. The other option is to have the receiver know what key to expect and only transfer
+the value. This reduces the data payload. Protobufs chose the latter. Each protocol buffer message is defined in a `.proto` 
+file, known to both the sender and the receiver. Since services usually communicate over a set of fixed, well-defined messages,
+this makes sense.
+
+Inorder to be language neutral, you need a way to translate your encoding and decoding logic into the specific langauge.
+Having the code translated natively into the desired language is the best way to ensure the final generated code runs as fast
+as possible. This is why Protobufs use a special compiler that takes the message specification, as is described in the `.proto`
+file and translates that to the application's language, generating data access classes.
 
 References:
 [1] Protocol Buffers Tutorial - An Introduction to Protobufs, FullStack Academy
