@@ -46,7 +46,10 @@ The same data expressed in XML would look like:
 
 As we can see, this form of data transfer, while great for readability, is terrible for efficiency. Transmitting data over
 the network is an expensive operation and you want to try to get more done with less. This is where Protocol Buffers come in.
-Protobufs were created by Google back in 2008 as a way of serializing structured data for transmission and storage.
+Protobufs were created by Google back in 2008 as a way of serializing structured data for transmission and storage. This is
+designed for server to server communication to make it as efficient as possible, while being language neutral. Languages such
+as C++, Java, Python etc. have several libraries for marshalling and de-marshalling data and Protobufs were a way to
+standardize this across various platforms.
 
 References:
 [1] Protocol Buffers Tutorial - An Introduction to Protobufs, FullStack Academy
