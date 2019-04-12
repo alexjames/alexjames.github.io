@@ -15,6 +15,38 @@ The considerations you have to make while deciding how to send data over the wir
   * Size and efficiency of the data being transmitted
   * How much data actually needs to be sent for the endpoint to do its job
 
+For the frontend, i.e. data from the user to the server, it makes sense for the data to be human-readable, making it easier to
+use and debug. This is why JSON (JavaScript Object Notation) and XML (eXtensible Markup Language) are popular for this kind of
+communication.
+
+Here is an example JSON object.
+```
+{"menu": {
+  "id": "file",
+  "value": "File",
+  "popup": {
+    "menuitem": [
+      {"value": "New", "onclick": "CreateNewDoc()"},
+      {"value": "Open", "onclick": "OpenDoc()"},
+      {"value": "Close", "onclick": "CloseDoc()"}
+    ]
+  }
+}}
+```
+The same data expressed in XML would look like:
+```
+<menu id="file" value="File">
+  <popup>
+    <menuitem value="New" onclick="CreateNewDoc()" />
+    <menuitem value="Open" onclick="OpenDoc()" />
+    <menuitem value="Close" onclick="CloseDoc()" />
+  </popup>
+</menu>
+```
+
+As we can see, this form of data transfer, while great for readability, is terrible for efficiency. Transmitting data over
+the network is an expensive operation and you want to try to get more done with less. This is where Protocol Buffers come in.
+Protobufs were created by Google back in 2008 as a way of serializing structured data for transmission and storage.
 
 References:
 [1] Protocol Buffers Tutorial - An Introduction to Protobufs, FullStack Academy
