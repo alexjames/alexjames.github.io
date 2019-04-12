@@ -5,4 +5,18 @@ date:   2019-04-12 14:10:00
 categories: cs
 ---
 
-Protocol Buffers start.
+When you interact with a web application, there are two primary kinds of data transfers that happen. One is the transfer of
+data from the user (or client) to the server. The other is between servers.
+
+The considerations you have to make while deciding how to send data over the wire are:
+  * Transmission medium
+  * What protocol to use?
+  * What format should the data be in?
+  * Size and efficiency of the data being transmitted
+  * How much data actually needs to be sent for the endpoint to do its job
+
+
+References:
+[1] Protocol Buffers Tutorial - An Introduction to Protobufs, FullStack Academy
+[2] https://en.wikipedia.org/wiki/Protocol_Buffers
+[3] https://developers.google.com/protocol-buffers/docs/overview
