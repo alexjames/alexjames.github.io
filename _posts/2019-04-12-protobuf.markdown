@@ -51,13 +51,73 @@ the network is an expensive operation and you want to try to get more done with 
 Protobufs were created by Google back in 2008 as a way of serializing structured data for transmission and storage. This is
 designed for server to server communication to make it as efficient as possible, while being language neutral. Languages such
 as C++, Java, Python etc. have several libraries for marshalling and de-marshalling data, each with their own syntax, 
-specification and varying levels of complexity. Protobufs are a way to have one standard across various platforms.
-
-# Data Representation
-
+specification and varying levels of complexity. Protobufs provide a single standard across various platforms.
 
 # Designing Protobufs
-How do we go about designing an efficient data transfer mechanism? Given a fixed data format, the goal is to come up with as
+While designign a data encoding scheme, we start by looking at the different kinds of basic data types we need to encode.
+The most common data types we have are:
+  * numeric (integers, floats)
+  * non-numeric (boolean, arbitrary bytes, strings)
+
+In theory, everything is a stream of bytes. You could use a single scheme to represent everything and not differentiate between
+numberic and non-numeric types. At the fundamental level though, numeric types occur very frequently in computations and there
+are several optimizations that can be applied to represent them in compact forms. Let's try looking at some of these.
+
+## Integers
+Integers are the most fundamental data type. Let's take the number 99 expressed as a 16-bit integer for example. In hardware,
+it would typically be represented as follows. Note, the actual order of byte would depend on the endianness of the machine. 
+But for simplicity, we're just going to assume big endian.
+```
+Number 99           0000 0000 0110 0011
+```             
+We could choose to directly represent this as is. All 16-bit integers would then take 2 bytes to represent. And since this
+is implemented at the hardware level, it's easy to work with data in this format. The trade-off here would be that smaller
+numbers do not use the whole range of bits we'd be using to represent them. Here, the number 99 did not require the most
+significant byte to express it. This can result in a lot of wasted space if we're dealing with mostly smaller numbers. And
+this turns out to be true in practice. 32-bit and 64-bit integers are pretty commonly used with the actual data not always
+making use of the entire range of bits allocated to represent them.
+
+This is where variable integers (varints) come in. Varints are based on the idea that numbers are not uniformly distributed,
+with smaller numbers occuring more frequently than larger ones. The way they work is varints split a number up, 7 bits at a
+time and use a bit to mark the end of a number. The bit marker is the most significant bit of each byte in a varint. Here are
+a couple of examples.
+```
+Number 1           0000 0000 0000 0001
+                              |      |
+                              -7 bits-
+                              000 0001
+                   No more data to represent. Use MSB
+                   to represent end (bit value 0).
+                 
+Final varint representation: 0000 0001
+
+Number 369         0000 0001 0111 0001
+                              |      |
+                              -7 bits-
+                              111 0001
+                   More bits to follow. Use the MSB
+                   to represent this (bit value 1).
+                 
+First varint byte: 1111 0001
+
+Number 369         0000 0001 0111 0001
+                      |      |
+Next 7 bits           -7 bits-
+                      000 0010
+                   No more bits to follow. Use MSB
+                   to represent end (bit value 0).
+                   
+Second varint byte: 0000 0010
+
+Final varint representation: 1111 0001 0000 0010
+
+```
+
+
+
+
+
+How do we go about designing something like a protobuf? Given a fixed data format, the goal is to come up with as
 small a representation for the data (in terms of bytes) as possible. JSON and XML data can be viewed as key-value pair records,
 and that's the kind of data we'll try to transmit here.
 
@@ -68,18 +128,22 @@ the value. This reduces the data payload. Protobufs chose the latter. Each proto
 file, known to both the sender and the receiver. Since services usually communicate over a set of fixed, well-defined messages,
 this makes sense.
 
-Inorder to be language neutral, you need a way to translate your encoding and decoding logic into the specific langauge.
-Having the code translated natively into the desired language is the best way to ensure the final generated code runs as fast
+Inorder to be language neutral, you need a way to translate your encoding and decoding logic into a specific langauge.
+Having the code translated natively into the desired language is a great way to ensure the final generated code runs as fast
 as possible. This is why Protobufs use a special compiler that takes the message specification, as is described in the `.proto`
 file and translates that to the application's language, generating data access classes.
 
 # Where Protobufs are not as helpful
 Protobufs were designed with XML as a direct reference. XML documents are human-readable and can be used to model unstructured
-text based data. Protobufs don't play well with semi-structured or un-structured data. XML is also self-contained and to some
+text-based data. Protobufs don't play well with semi-structured or un-structured data. XML is also self-contained and to some
 extent, self-describing. You can't parse a protocol buffer message if you don't have its corresponding definition 
 (.proto file).
 
 References:
 [1] Protocol Buffers Tutorial - An Introduction to Protobufs, FullStack Academy
+
 [2] https://en.wikipedia.org/wiki/Protocol_Buffers
+
 [3] https://developers.google.com/protocol-buffers/docs/overview
+
+[4] https://carlmastrangelo.com/blog/lets-make-a-varint
