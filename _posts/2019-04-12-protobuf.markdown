@@ -83,7 +83,7 @@ time and use a bit to mark the end of a number. The bit marker is the most signi
 a couple of examples.
 ```
 Number 1           0000 0000 0000 0001
-                              |      |
+                              |------|
                               -7 bits-
                               000 0001
                    No more data to represent. Use MSB
@@ -91,8 +91,10 @@ Number 1           0000 0000 0000 0001
                  
 Final varint representation: 0000 0001
 
+=============================
+
 Number 369         0000 0001 0111 0001
-                              |      |
+                              |------|
                               -7 bits-
                               111 0001
                    More bits to follow. Use the MSB
@@ -101,7 +103,7 @@ Number 369         0000 0001 0111 0001
 First varint byte: 1111 0001
 
 Number 369         0000 0001 0111 0001
-                      |      |
+                      |------|
 Next 7 bits           -7 bits-
                       000 0010
                    No more bits to follow. Use MSB
@@ -111,9 +113,40 @@ Second varint byte: 0000 0010
 
 Final varint representation: 1111 0001 0000 0010
 
+=============================
+
+Number 99          0000 0000 0110 0011
+                              |------|
+                              -7 bits-
+                              110 0011
+                   No more data to represent. Use MSB
+                   to represent end (bit value 0).
+                 
+Final varint representation: 0110 0011
 ```
 
+As we see from the above example, the number 99 can now be represented using just one byte using the varint representation
+as opposed to two bytes in its previous 16-bit representation. Unpacking a varint is also reasonably straight forward,
+where the parser can keep looking at the MSB of every byte until it encounters a 0, indicating the end. Then it reverses
+the order of the bytes and gets the bit representation of the number.
 
+```
+varint byte received:       1111 0011 0110 0010
+                             |------|  
+                           first block
+                           
+varint byte received:       1111 0011 0110 0010
+                                       |------|
+                              second (and last) block
+                            
+Bit representation after
+swapping blocks:             110 0010 111 0011
+
+Numeric value:               12659 (0x3173)
+
+```
+This scheme is great for small numbers, but bad for large numbers, because then we'd need extra bytes for representing
+a large number in varint format as opposed to its original raw-byte format.
 
 
 
