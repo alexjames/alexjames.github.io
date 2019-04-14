@@ -146,7 +146,12 @@ Numeric value:               12659 (0x3173)
 
 ```
 This scheme is great for small numbers, but bad for large numbers, because then we'd need extra bytes for representing
-a large number in varint format as opposed to its original raw-byte format.
+a large number in varint format as opposed to its original raw-byte format. Protocol buffers use the varint representation
+for representing integers.
+
+## Signed integers
+
+## Floats and Strings
 
 
 
