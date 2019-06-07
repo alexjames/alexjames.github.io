@@ -6,51 +6,56 @@ categories: cs
 ---
 
 # Security Properties and Mechanisms
-Security properties are fundamental properties that are used to reason about and analyze the security characteristics of higher-level 
-systems. These definitions are generally accepted. You will come across them pretty often, especially in academic literature. 
-What a property entails is a loosely defined term. Different people may choose to define these properties to encompass
-different things. It is good practice to document these definitions when using them in your own work, so there is no ambiguity.
+Security properties are fundamental properties that are used to reason about and analyze the security characteristics of computer 
+systems. You will come across them pretty often, especially in academic literature. What a property entails is a loosely defined term.
+Different people may choose to define these properties to encompass different things. Here I'll describe some generally accepted definitions
+for some of these properties. It is good practice to document your definitions for security properties when using them in your own work, so
+there is no ambiguity.
 
 ### Secrecy/Confidentiality/Privacy
 Privacy means to keep your own information secret. For example, I want to keep my age private and never share it with anybody
-else. I will never provide any mechanism for anyone other than me to ever have access to this information. A 
-system that protects my age from other's accessing it provides me "privacy".
+else. I will never provide any mechanism for anyone other than me to ever have access to this information. Per this example, a 
+system that stores my age and never allows anyone other than me from accessing it provides me "privacy".
 
 Confidentiality is the obligation to keep someone else's information secret. For example, if X tells me their phone number,
-and I'm in an agreement with X to maintain confidentiality, I cannot reveal their phone number to anyone else.
+and I'm in an agreement with X to maintain confidentiality, I cannot reveal their phone number to anyone else. Likewise, an attorney
+maintains the confidentiality of their clients.
 
-Secrecy is keeping limiting the number of "principles" who can access some information. This can be thought of as a more general
+Secrecy is limiting the number of "principles" who can access some information. This can be thought of as a more general
 property protecting information on both ends. For example, if X and Y are communicating, and the secrecy of their communication
-is being maintained, then no one can decipher what X and Y are talking about.
+is being maintained, then no one other than X and Y can decipher what is being communicated.
 
 ### Integrity
 Ensuring integrity means to assure that information has not been altered by unauthorized or unknown means. This doesn't necessarily
-mean that the information itself cannot be tampered with. It only means that if the information were to be tampered with, we had a
-mechanism to determine that this has occurred.
+mean that the information itself cannot be tampered with. It only means that if the information were to be tampered with, we have a
+mechanism to determine that the tampering has occurred. That the "integrity" of the message has bee lost.
 
 It's important to note here that integrity has nothing to do with secrecy. We may have systems where both properties hold, but
 they are by themselves, mutually exclusive. You could maintain the integrity of the string "TARTAN" such that if even a single
-character was modified, we would know that it has changed. But the string itself does not need to be a secret. A harddisk may
-employ bit parity checks can ensure that data corruption is detectable.
+character was modified, we would know that it has changed. But the string itself does not need to be a secret. Similarly, a hard-disk may
+employ bit parity checks to ensure that data corruption is detectable.
 
 ### Availability
-Availability is the ability of a system to perform it's functions. If a system is under more load than it can handle, it may
+Availability is the ability of a system to perform its functions. If a system is under more load than it can handle, it may
 stop functioning correctly and we have the loss of availability. Attacks such as DOS (denial of service) target the availability
 property of a system.
 
 ### Identification
-Corroborating the identity of an entity. For example, your driver's license is used to identify you at the airport.
+Identification means corroborating the identity of an entity. For example, your driver's license is used to identify you at the airport.
 
 ### Authentication
 The authentication security property stands for "message-origin" authentication. i.e. validating that a message has come
 from a particular principle. This is a little different from the common use of the term "authentication". The colloquial usage
-involves corroborating both authentication and identity. I.e. if Alex sends you a message, you verify that the message has 
-in fact come from Alex and Alex is who he says he is. Identification and "message-origin" authentication are both same sides of
-the authentication coin (quote courtesy: Nicholas Cristin).
+involves corroborating both authentication and identity. For example, if Alex sends you a message, you verify that the message has 
+in-fact come from Alex and Alex is who he says he is. 
 
-An example would be that you could verify the origin of a phone call by checking the person's caller ID. You authenticate Alice
-by verifying her caller ID. You identify Alice by the sound of her voice, or by asking her a question that only Alice would know
-like - "What movie did we go to last week?". The difference between authentication and identification is subtle.
+An example would be that you could verify the origin of a phone call by checking the person's caller ID. You "authenticate" Alice
+by verifying her caller ID. You "identify" Alice by the sound of her voice, or by asking the person on the line a question whose answer only
+Alice would know like - "What movie did we go to last week?". It's possible for me to take Alice's phone and call you. You'll still see 
+Alice's caller ID on your phone. But it's not Alice who is calling you. This is an example of authentication without identification. The
+difference between authentication and identification is subtle. Identification and "message-origin" authentication are both same sides of
+the authentication coin (quote courtesy: Nicholas Cristin). In the context of data communication, one usually does not make sense without
+the other.
 
 ### Authorization
 This is granting an entity to ability to perform an action. For example, Alice is only authorized to access the first and second
