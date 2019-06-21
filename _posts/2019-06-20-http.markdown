@@ -10,7 +10,21 @@ Back in the day, CERN was having problems with high churn of information and no 
 
 "Hypertext" is a term that existed since the 60's. Hypertext, which is taken to mean as an "extension" to regular text, is a model allowing for linking text content. Tim Berners Lee made hypertext the basis for his system and called it the World Wide Web. One of the major goals he had for the system he was building for information retreival was that it should allow any kind of information to be stored. And it should be possible to discover new information. The system would be de-centralized and allow access to heterogenous systems. Clients would access documents stored on a hypertext server using a browser application. A transformation could be applied on existing documents/databases to convert them to hypertext to serve clients. This way, older data not in hypertext could also be accessed by this system. The Hypertext Transfer Protocol would be the protocol used to access the system. The original implemntation only had the GET method. Interestingly, "authorization" and "accounting" were an explicit non-goal of the system. The focus of the system was on unrestricted information sharing.
 
+## HTTP
+HTTP serves the client-server model. A client makes a request to a server and a server responds to it.
 
+The purpose of the User-Agent header is to tell the server how to serve the page. For example, a page presented to a mobile device could be different from a page presented to a desktop.
 
+Headers provide metadata about the requests and responses.
+```
+HTTP-Message = Request | Response
+
+generic message = start-line
+                  *(0 or more headers CRLF)
+                  CRLF
+                  [message body]
+
+Message body is optional.
+```
 References:
 https://www.w3.org/History/1989/proposal.html
