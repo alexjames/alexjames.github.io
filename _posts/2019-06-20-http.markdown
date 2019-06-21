@@ -1,0 +1,9 @@
+---
+layout: default
+title:  "The Evolution of Hyper-text"
+date:   2019-06-20 12:50:00
+categories: cs
+---
+
+## The Beginnings of the Web
+Back in the day, CERN was having problems with high churn of information and no easy way to access it. Tim Berners Lee, who worked there, thought that Linked Information Systems were a better way to store information than hierarchical systems. The same way you draw diagrams with cirles representing concepts and arrows representing the relationship between the concepts, Linked Information Systems encapsulate data and their relationships. One of the major goals he had for the system he was building for information retreival was that it should allow any kind of information to be stored. And it should be possible to discover new information.
