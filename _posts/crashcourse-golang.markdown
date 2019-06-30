@@ -39,3 +39,29 @@ var phrase = "Blah"
 isCorrect := false // Shorthand, datatype inferred
 fmt.Println(name, age)
 ```
+### Functions
+The basic format for a function is:
+```
+func function_name(parameter1 type, parameter2 type...) <return_type> {
+	// function body
+}
+```
+
+```
+func add(num1 int, num2 int) int {
+	return num1 + num2
+}
+// Also, you can have multiple parameters of the same type like this: func add(num1, num2 int) int {...}
+
+func main() {
+	fmt.Println(add(3, 6))
+}
+```
+Functions can return multiple values.
+```
+func getID() (string, int, string) {
+	return "Alex", 99999999, "Valid"
+}
+...
+var name, id, validity = getID()
+```
