@@ -30,3 +30,12 @@ rune (int32)
 float32 float64
 complex32 complex64
 ```
+### Variable Declaration Examples
+```
+var name string = "Alex"
+var age int = 30
+var length1, length2 int = 12, 4 // declaring multiple vars
+var phrase = "Blah"
+isCorrect := false // Shorthand, datatype inferred
+fmt.Println(name, age)
+```
