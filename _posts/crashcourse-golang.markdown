@@ -57,11 +57,18 @@ func main() {
 	fmt.Println(add(3, 6))
 }
 ```
-Functions can return multiple values.
+Functions can return multiple values. You could also name the return values and use them like local variables.
 ```
 func getID() (string, int, string) {
 	return "Alex", 99999999, "Valid"
 }
 ...
 var name, id, validity = getID()
+
+
+func doSomething() (retval int, errcode int) {
+	retval = 4
+	errcode = 0
+	return
+}
 ```
