@@ -49,6 +49,19 @@ Connection: close
 ```
 
 
+
+### Status Codes
+
+Responses come back with a status code and/or additional data and headers. The status codes are divided into 5 groups based on the kind of response.
+
+| Code | Type |
+|-----|-----|
+|1xx|Informational|
+|2xx|Success|
+|3xx|Redirect|
+|4xx|Client Error|
+|5xx|Server Error|
+
 The purpose of the User-Agent header is to tell the server how to serve the page. For example, a page presented to a mobile device could be different from a page presented to a desktop.
 
 Headers provide metadata about the requests and responses.
