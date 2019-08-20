@@ -71,7 +71,9 @@ Server: gws
 ```
 
 ### Headers
-Headers provide metadata about a request or a response. This might include dates/times, server or application information, etc. The `Host` header, which declares the domain name of the server, is required on HTTP/1.1 requests. Listed below are popular headers and their purpose.
+Headers provide metadata about a request or a response. This might include dates/times, server or application information, etc. The `Host` header, which declares the domain name of the server, is required on HTTP/1.1 requests. Header field names are case-sensitive. Non-standard headers were conventionally named with an `X-` pre-fix, a practice which is not followed anymore.
+
+Listed below are popular headers and their purpose.
 
 | Header | Example |Purpose |
 |-----|-----|------|
@@ -82,7 +84,7 @@ Headers provide metadata about a request or a response. This might include dates
 |Forwarded |Forwarded: for=192.1.16.44;proto=https| Set by a proxy server to provide information about the original client. Because a proxy will initiate a new HTTP connection with the destination server, the server might lose context about the original client. The `Forwarded` header indicates to the server those details as well as lets the server know that this request is coming from a proxy |
 |From|From: alx.james@gmail.com|E-mail of the user making the request|
 |Host|Host: www.example.com|Information about the domain of the requestor|
-|User-Agent|User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/12.0|Identifying information about the client, used by server to decide what kind of data to display|
+|User-Agent|User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/12.0|Identifying information about the client. The purpose of the User-Agent header is to tell the server how to serve the page. For example, a page presented to a mobile device could be different from a page presented to a desktop.|
   
 ### Status Codes
 
@@ -96,11 +98,37 @@ Responses come back with a status code and/or additional data and headers. The s
 |4xx|Client Error|
 |5xx|Server Error|
 
-The purpose of the User-Agent header is to tell the server how to serve the page. For example, a page presented to a mobile device could be different from a page presented to a desktop.
+Popular status codes
+| Code | Meaning |
+|-----|-----|
+|100 Continue|The server acknoledges the data received so far. Used in response to large requests.|
+|200 OK |Request was successful|
+|204|The request was successful and there is no data to return.|
+|301 Moved Permanently|Redirecting URL to a new location. The `Location` header is used to tell the client where to redirect the request|
+|304 Not Modified|The requested resource has not been modified since the time specified in `If-Modified-Since` or `If-None-Match`|
+|400 Bad Request|Malformed/incorrect request|
+|401 Unauthorized|Even though the term authorized is used, it indicates that the request is unauthenticated, as in, the server could not accertain the identity of the requestor|
+|403 Forbidden|The requested action is forbidden by the server|
+|404 Not Found|The most common error you get while browsing online, the url you're requesting points to a resource that does not exist|
+|408 Request Timeout|Connection timed out|
+|412 Precondition Failed|One or more required criteria by the client or server are unsatisfied|
+|500 Internal Server Error|Generic message for something bad happened on the server|
+|502 Bad Gateway|Sent by gateways/proxies when they receive an invalid response from the destination (upstream) server|
 
 
-
+#### 301 Moved Permanently
+Client request:
+```
+GET /index.php HTTP/1.1
+Host: www.example.org
+```
+Server response:
+```
+HTTP/1.1 301 Moved Permanently
+Location: http://www.example.org/index.asp
+```
 
 
 References:
 https://www.w3.org/History/1989/proposal.html
+wikipedia.org
