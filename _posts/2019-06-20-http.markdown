@@ -27,13 +27,13 @@ generic message = start-line
 Message body is optional.
 ```
 
-* Client Request *
+* Client Request 
 ```
 GET / HTTP/1.1
 Host: www.mywebsite.com
 ```
 
-* Server Response *
+* Server Response 
 
 ```
 HTTP/1.1 200 OK
@@ -71,8 +71,19 @@ Server: gws
 ```
 
 ### Headers
-Headers provide metadata about a request or a response. This might include dates/times, server or application information, etc. The `Host` header, which declares the domain name of the server, is required on requests. Listed below are popular headers and their purpose.
+Headers provide metadata about a request or a response. This might include dates/times, server or application information, etc. The `Host` header, which declares the domain name of the server, is required on HTTP/1.1 requests. Listed below are popular headers and their purpose.
 
+| Header | Example |Purpose |
+|-----|-----|------|
+|Accept|Accept: text/html| Declare what kind of data is acceptable in the response |
+|Accept-Encoding|Accept-Encoding: gzip, deflate| Acceptable encodings by the client. This ensures the server only sends back data encoded in a format that client understands. |
+|Authorization| Authorization: Basic \<base-64 string\> | Used to provide authentication information along with the request. In "Basic HTTP authentication", the username and password are provided in the format `user:password` encoded in base-64 format. |
+|Connection|Connection: keep-alive| Connection control options |
+|Forwarded |Forwarded: for=192.1.16.44;proto=https| Set by a proxy server to provide information about the original client. Because a proxy will initiate a new HTTP connection with the destination server, the server might lose context about the original client. The `Forwarded` header indicates to the server those details as well as lets the server know that this request is coming from a proxy |
+|From|From: alx.james@gmail.com|E-mail of the user making the request|
+|Host|Host: www.example.com|Information about the domain of the requestor|
+|User-Agent|User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/12.0|Identifying information about the client, used by server to decide what kind of data to display|
+  
 ### Status Codes
 
 Responses come back with a status code and/or additional data and headers. The status codes are divided into 5 groups based on the kind of response.
