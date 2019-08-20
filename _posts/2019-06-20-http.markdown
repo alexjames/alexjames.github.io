@@ -11,7 +11,11 @@ Back in the day, CERN was having problems with high churn of information and no 
 "Hypertext" is a term that existed since the 60's. Hypertext, which is taken to mean as an "extension" to regular text, is a model allowing for linking text content. Tim Berners Lee made hypertext the basis for his system and called it the World Wide Web. One of the major goals he had for the system he was building for information retreival was that it should allow any kind of information to be stored. And it should be possible to discover new information. The system would be de-centralized and allow access to heterogenous systems. Clients would access documents stored on a hypertext server using a browser application. A transformation could be applied on existing documents/databases to convert them to hypertext to serve clients. This way, older data not in hypertext could also be accessed by this system. The Hypertext Transfer Protocol would be the protocol used to access the system. The original implemntation only had the GET method. Interestingly, "authorization" and "accounting" were an explicit non-goal of the system. The focus of the system was on unrestricted information sharing.
 
 ## HTTP
-HTTP follows the client-server model. A client makes a request to a server and a server responds to it. The client is always the initiator of a connection. This is the format of an HTTP message:
+HTTP follows the client-server model. A client makes a request to a server and a server responds to it. The client is always the initiator of a connection. 
+
+### Message Formats
+This is the format of an HTTP message:
+
 ```
 HTTP-Message = Request | Response
 
@@ -23,14 +27,15 @@ generic message = start-line
 Message body is optional.
 ```
 
-```
 * Client Request *
-
+```
 GET / HTTP/1.1
 Host: www.mywebsite.com
+```
 
 * Server Response *
 
+```
 HTTP/1.1 200 OK
 Date: Thu Aug 15 21:48:34 PDT 2019
 Content-Length: 104
@@ -45,10 +50,28 @@ Connection: close
   </body>
 </html>
 
-
 ```
 
+Here is how you connect to a webserver as a client and send it HTML requests.
+```
+alx@conjecture:~$ telnet www.google.com 80
+Trying 172.217.5.68...
+Connected to www.google.com.
+Escape character is '^]'.
+GET /index.html HTTP/1.1
 
+HTTP/1.1 200 OK
+Date: Tue, 20 Aug 2019 03:45:34 GMT
+Expires: -1
+Cache-Control: private, max-age=0
+Content-Type: text/html; charset=ISO-8859-1
+P3P: CP="This is not a P3P policy! See g.co/p3phelp for more info."
+Server: gws
+...
+```
+
+### Headers
+Headers provide metadata about a request or a response. This might include dates/times, server or application information, etc. The `Host` header, which declares the domain name of the server, is required on requests. Listed below are popular headers and their purpose.
 
 ### Status Codes
 
@@ -64,7 +87,6 @@ Responses come back with a status code and/or additional data and headers. The s
 
 The purpose of the User-Agent header is to tell the server how to serve the page. For example, a page presented to a mobile device could be different from a page presented to a desktop.
 
-Headers provide metadata about the requests and responses.
 
 
 
