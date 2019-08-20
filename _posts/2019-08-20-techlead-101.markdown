@@ -1,0 +1,15 @@
+# Techlead 101
+
+I've been forutnate enough to work with some really great colleagues, many of whom are arguably at the top of the field of information security. Here is some of the advice that I've been given with regards to developping down the engineering ladder.
+
+ * When asked for a timeline for a project and you're not sure, ask for time and get back. You will almost never by rejected the request. Make sure you take your time and quote a conservative timeline.
+ * When something that you hoped to accomplish does not seem to pan out, immediately own up to it. Don't delay informing your stakeholders. The longer you put this off, the more it costs you and them. The lesser the time you'll have to make it up or come up with alternatives.
+ * When you are going through a hard time, let you manager know. Tell them that you won't be your 100% for a bit and that you need some time to process your emotions and your productivity will be affected. Work always bleed into personal life and vice-versa.
+ * When you make a plan, make all you assumptions and depenencies explicit.
+ * When you are driving a project, you are ultimately responsible for delivering the project, to appropriately scope it,decdie what will and won't be done and manage expectations.
+ * Whenver you go to upper management, don't go to them with a problem asking for a solution. Go to them with a solution.
+ * When you work with people, try ti establish a deadline. Even when they aren't explicit. If you start to slip a deadline or are unable to deliver something you committed to, always let your customer know you're 100% committed to ensuring their success. Even if you're failing, but you're doing your best, and people can see it, they will cut you some slack.
+ * You have to be persuasive to convince people to join you.
+ * Don't be afraid to pushback if something seems unreasonable. Clearly articulate why you think something will take you time.
+ * When someone comes to you with a problem, try to understand what they're trying to do.
+ * Too much or too little transparency is bad.
