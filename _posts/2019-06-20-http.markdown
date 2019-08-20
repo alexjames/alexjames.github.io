@@ -11,7 +11,7 @@ Back in the day, CERN was having problems with high churn of information and no 
 "Hypertext" is a term that existed since the 60's. Hypertext, which is taken to mean as an "extension" to regular text, is a model allowing for linking text content. Tim Berners Lee made hypertext the basis for his system and called it the World Wide Web. One of the major goals he had for the system he was building for information retreival was that it should allow any kind of information to be stored. And it should be possible to discover new information. The system would be de-centralized and allow access to heterogenous systems. Clients would access documents stored on a hypertext server using a browser application. A transformation could be applied on existing documents/databases to convert them to hypertext to serve clients. This way, older data not in hypertext could also be accessed by this system. The Hypertext Transfer Protocol would be the protocol used to access the system. The original implemntation only had the GET method. Interestingly, "authorization" and "accounting" were an explicit non-goal of the system. The focus of the system was on unrestricted information sharing.
 
 ## HTTP
-HTTP follows the client-server model. A client makes a request to a server and a server responds to it. The client is always the initiator of a connection. 
+HTTP follows the client-server model. A client makes a request to a server and a server responds to it. The client is always the initiator of a connection. The standard port of HTTP is port 80 and HTTPS (HTTP over TLS) is port 443.
 
 ### Message Formats
 This is the format of an HTTP message:
@@ -70,6 +70,15 @@ Server: gws
 ...
 ```
 
+### Request Methods
+
+| Method | Description |
+|--------|-------------|
+|GET|Retreive an object|
+|POST|Uploda data to server|
+|HEAD|Retrieve metatdata about an object. Same as GET but don't return message body|
+|OPTION|Request information about capabilities about a server|
+
 ### Headers
 Headers provide metadata about a request or a response. This might include dates/times, server or application information, etc. The `Host` header, which declares the domain name of the server, is required on HTTP/1.1 requests. Header field names are case-sensitive. Non-standard headers were conventionally named with an `X-` pre-fix, a practice which is not followed anymore.
 
@@ -99,11 +108,12 @@ Responses come back with a status code and/or additional data and headers. The s
 |5xx|Server Error|
 
 Popular status codes
+
 | Code | Meaning |
 |-----|-----|
 |100 Continue|The server acknoledges the data received so far. Used in response to large requests.|
 |200 OK |Request was successful|
-|204|The request was successful and there is no data to return.|
+|204 No Content|The request was successful and there is no data to return.|
 |301 Moved Permanently|Redirecting URL to a new location. The `Location` header is used to tell the client where to redirect the request|
 |304 Not Modified|The requested resource has not been modified since the time specified in `If-Modified-Since` or `If-None-Match`|
 |400 Bad Request|Malformed/incorrect request|
@@ -127,7 +137,14 @@ Server response:
 HTTP/1.1 301 Moved Permanently
 Location: http://www.example.org/index.asp
 ```
+### HTTP Connection Establishment
+Illustrated here is connecting to example.com on port 80.
 
+ * Client inititates connection to example.com on port 80
+ * The server at example.com accepts the connection.
+ * The Client sends the HTTP request.
+ * The server responds with an HTTP response.
+ * The server closes the connection.
 
 References:
 https://www.w3.org/History/1989/proposal.html
