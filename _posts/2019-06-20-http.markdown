@@ -80,6 +80,27 @@ Server: gws
 |HEAD|Retrieve metatdata about an object. Same as GET but don't return message body|
 |OPTION|Request information about capabilities about a server|
 
+#### POST
+Two common formats of POST messages are 
+ * application/json
+ * application/x-www-form-urlencoded
+ 
+The `Content-Type` header is used to specify these formats.
+
+URL encoding allows non-alphanumeric characters to be encoded into alphanumeric characters for ease of transmission.
+```
+This is awesome+9! ----> This%20is%20awesome%2B9!
+```
+
+##### Example curl requests
+```
+curl -d "param1=value1&param2=value2" -H "Content-Type: application/x-www-form-urlencoded" -X POST http://localhost:3000/data
+
+curl -d '{"key1":"value1", "key2":"value2"}' -H "Content-Type: application/json" -X POST http://localhost:3000/data
+```
+
+
+
 ### Headers
 Headers provide metadata about a request or a response. This might include dates/times, server or application information, etc. The `Host` header, which declares the domain name of the server, is required on HTTP/1.1 requests. Header field names are case-sensitive. Non-standard headers were conventionally named with an `X-` pre-fix, a practice which is not followed anymore.
 
@@ -147,9 +168,12 @@ Illustrated here is connecting to example.com on port 80.
  * The server responds with an HTTP response.
  * The server closes the connection.
 
-References:
-https://www.w3.org/History/1989/proposal.html
-wikipedia.org
-
 ### Cookies
 HTTP is a stateless protocol.
+
+## References
+ * https://www.w3.org/History/1989/proposal.html
+ * wikipedia.org
+ * https://gist.github.com/subfuzion/08c5d85437d5d4f00e58
+
+
