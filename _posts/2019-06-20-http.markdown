@@ -75,7 +75,8 @@ Server: gws
 | Method | Description |
 |--------|-------------|
 |GET|Retreive an object|
-|POST|Uploda data to server|
+|POST|Uploda data/forms to server. The data is sent in the message body.|
+|PUT|The data enclosed in the message should be stored at the URI specified. If the URI does not exist, create it.|
 |HEAD|Retrieve metatdata about an object. Same as GET but don't return message body|
 |OPTION|Request information about capabilities about a server|
 
@@ -149,3 +150,6 @@ Illustrated here is connecting to example.com on port 80.
 References:
 https://www.w3.org/History/1989/proposal.html
 wikipedia.org
+
+### Cookies
+HTTP is a stateless protocol.
