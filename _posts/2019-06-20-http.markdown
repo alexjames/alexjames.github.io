@@ -93,6 +93,7 @@ This is awesome+9! ----> This%20is%20awesome%2B9!
 ```
 
 ##### Example curl requests
+The `-X` flag specifies method name and `-d` flag specifies message data in `curl`.
 ```
 curl -d "param1=value1&param2=value2" -H "Content-Type: application/x-www-form-urlencoded" -X POST http://localhost:3000/data
 
