@@ -28,9 +28,9 @@ complex32 complex64
 ```
 var name string = "Alex"
 var age int = 30
-var length1, length2 int = 12, 4 // declaring multiple vars
+var length1, length2 int = 12, 4 // declaring multiple vars at once
 var phrase = "Blah"
-isCorrect := false // Shorthand, datatype inferred
+isCorrect := false // Shorthand declaration, datatype inferred
 fmt.Println(name, age)
 ```
 ### Functions
@@ -72,5 +72,59 @@ func doSomething() (retval int, errcode int) {
 	retval = 4
 	errcode = 0
 	return
+}
+```
+### Arrays/Slices
+Declaring an array of strings of size 5.
+```
+var listArr [4]string // declare an array
+listArr[0] = "Alex"   // indexing starts from 0
+listArr[3] = "Jacob"  // last element index in an array of size 4
+```
+```
+colors := []string{"red", "blue"}    // declare and initialize array
+fmt.Println(colors)                  // print entire array
+```
+
+Slices are subsets of arrays that can be sepecified with the format:
+```
+Array[start index (included):last index (excluded)]
+```
+
+```
+// array of colors of size 4
+colors := []string{"red", "blue", "green", "yellow"}
+fmt.Println(colors)           // [red blue green yellow]
+fmt.Println(colors[2:])       // [green yellow]
+fmt.Println(colors[:1])       // [red]
+fmt.Println(colors[2:4])      // [green yellow]
+```
+
+## Conditionals
+If statement
+```
+country := "india"
+
+// if-statement
+if country == "england" {
+	fmt.Println("Zip")
+} else if country == "canada" {
+	fmt.Println("Zap")
+} else {
+	fmt.Println("Zup")
+}
+```
+Switch statement
+```
+country := "india"
+
+// switch on variable name, no need of break statements like C
+switch country {
+case "england":
+	fmt.Println("Zip")
+case "canada":
+	fmt.Println("Zap")
+default:
+	fmt.Println("Zup")
 }
 ```
