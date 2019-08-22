@@ -128,3 +128,33 @@ default:
 	fmt.Println("Zup")
 }
 ```
+### Loops
+There is only a for-loop in golang.
+
+Basic `for` loop.
+```
+for i := 0; i < 10; i++ {
+	fmt.Println(i)
+}
+```
+
+`while` loop using a `for`.
+```
+i := 0
+for i < 10 {
+	fmt.Println(i)
+	i++
+}
+```
+
+`do`-`while` loop.
+```
+i := 0
+for {
+	fmt.Println(i)
+	i++
+	if i == 10 {
+		break
+	}
+}
+```
