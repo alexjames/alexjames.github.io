@@ -45,21 +45,29 @@ func function_name(parameter1 type, parameter2 type...) <return_type> {
 func add(num1 int, num2 int) int {
 	return num1 + num2
 }
-// Also, you can have multiple parameters of the same type like this: func add(num1, num2 int) int {...}
+```
+You can have multiple parameters of the same datatype.
+```
+func add(num1, num2 int) int {...}
+```
 
+```
 func main() {
 	fmt.Println(add(3, 6))
 }
 ```
-Functions can return multiple values. You could also name the return values and use them like local variables.
+
+Functions can return multiple values.
 ```
 func getID() (string, int, string) {
 	return "Alex", 99999999, "Valid"
 }
 ...
 var name, id, validity = getID()
+```
 
-
+You could also name the return values and use them like local variables.
+```
 func doSomething() (retval int, errcode int) {
 	retval = 4
 	errcode = 0
