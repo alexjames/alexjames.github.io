@@ -7,3 +7,9 @@ categories: webdev
 
 #### Viewport
 A viewport is the viewable window of a browser within which a web page is rendered. When the actual page is bigger than the viewport, scroll bars are provided by the browser. Since many web pages aren't optimized for mobile, mobile browsers will first render the page to a virtual viewport, before resizing it to the mobile screen so that everything is visible within it. CSS media queries allows websites to automatically resize based on the screen. This however, won't work if the mobile browsers viewport uses it's default size. The viewport meta tag allows web devs to control the browser viewport's size and scale.
+
+#### Node.js
+Node.js goes for the "Javascript everywhere" paradigm which allows writing server-side and client-side code in Javascript, so that they don't need to be written in separate languages. Node.js is a browser-less Javascript runtime environment. Node follows an event-driven, asynchrnous I/O based architecture.
+
+#### npm
+npm is a package manager for Node.js. It provides a command-line client called npm, which provides you access to the npm registry which is an online database of free and paid packages.
