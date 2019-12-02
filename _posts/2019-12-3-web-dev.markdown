@@ -1,0 +1,9 @@
+---
+layout: default
+title:  "Web Dev"
+date:   2019-12-03 09:09:00
+categories: webdev
+---
+
+#### Viewport
+A viewport is the viewable window of a browser within which a web page is rendered. When the actual page is bigger than the viewport, scroll bars are provided by the browser. Since many web pages aren't optimized for mobile, mobile browsers will first render the page to a virtual viewport, before resizing it to the mobile screen so that everything is visible within it. CSS media queries allows websites to automatically resize based on the screen. This however, won't work if the mobile browsers viewport uses it's default size. The viewport meta tag allows web devs to control the browser viewport's size and scale.
