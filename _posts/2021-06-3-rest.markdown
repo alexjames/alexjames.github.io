@@ -1,0 +1,13 @@
+---
+layout: default
+title:  "REST"
+date:   2019-12-03 09:09:00
+categories: webdev
+---
+
+# REST
+REpresentational State Transfer (REST) is an architectural style for building and accessing web services. It specifies a set of principles that a system must follow to be compliant. The criteria are:
+ * client-server architecture
+ * statelessness - no client information must be stored and every request must be independent of the next
+ * cacheablilty - data should be cacheable to improve performance
+ * a layered system - consisting
