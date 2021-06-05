@@ -6,7 +6,7 @@ categories: webdev
 ---
 
 # REST
-REpresentational State Transfer (REST) is an architectural style for building and accessing web services. It specifies a set of principles that a system must follow to be compliant. The criteria are:
+REpresentational State Transfer (REST) is an architectural style for building and accessing web services. Reliaability, scalability and performance are the main goals of REST and it specifies a set of principles that a system must follow. The criteria are:
  * client-server architecture - allows for separation of concerns between users and the service, enables scalability
  * stateless - every request should be independent and complete on its own, should not be dependent on context stored on the server; the client must store session state
  * cacheability - data should be cacheable by the client to improve performance
