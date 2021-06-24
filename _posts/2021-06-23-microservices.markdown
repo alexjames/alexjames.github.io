@@ -7,3 +7,5 @@ categories: webdev
 
 # Microservices
 Microservices architecutre consist of constructing an application that consistes of serveral services that are loosely-coupled, independently testable/maintainable/deployable and centered around business needs.
+
+It makes sense for most businesses to start out as a monolith and then eventually transition to microservices as the team scales.
