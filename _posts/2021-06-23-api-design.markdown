@@ -6,9 +6,11 @@ categories: webdev
 ---
 
 # API Design
+ * An API should ideally support RPC as well as HTTP/JSON.
 
+Interesting facts:
+80% of of consumer internet traffic is video.
 
 References:
 
 [1] https://cloud.google.com/apis/design
-
