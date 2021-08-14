@@ -73,9 +73,8 @@ func doSomething() (retval int, errcode int) {
 }
 ```
 
+### Default Values
 ```
-Default Values
-
 | Type | Value |
 | ---- | ----- |
 | number | 0 |
@@ -83,5 +82,14 @@ Default Values
 | string | "" |
 | interfaces | nil |
 
-interfaces= slice | pointer | map | channel | function
+ref types = slice | pointer | map | channel | function
+```
+
+### Pointers
+```
+x := 1
+p = &x
+*p = 2
+
+p := new(int)   <---- could be allocated on the stack
 ```
