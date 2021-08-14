@@ -72,3 +72,16 @@ func doSomething() (retval int, errcode int) {
 	return
 }
 ```
+
+```
+Default Values
+
+| Type | Value |
+| ---- | ----- |
+| number | 0 |
+| booleans | true/false |
+| string | "" |
+| interfaces | nil |
+
+interfaces= slice | pointer | map | channel | function
+```
