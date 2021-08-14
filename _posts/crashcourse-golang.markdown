@@ -93,3 +93,16 @@ p = &x
 
 p := new(int)   <---- could be allocated on the stack
 ```
+```
+func newInt() *int {
+	return new(int)
+}
+
+same as
+
+func newInt *int {
+	var x int
+	return &x
+}
+```
+### Control flow
