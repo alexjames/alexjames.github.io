@@ -14,3 +14,7 @@ Can anything be computed before-hand to speed up the process?
 
 ### Caching
 Can any of the call be reduced by caching? Is caching appropriate in the scenario it's being introduced?
+
+### Avoiding single points of failure
+
+
