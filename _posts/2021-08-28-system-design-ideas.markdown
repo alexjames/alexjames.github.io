@@ -17,4 +17,9 @@ Can any of the call be reduced by caching? Is caching appropriate in the scenari
 
 ### Avoiding single points of failure
 
+### Decouple the system
+Can concerns be separated so that they can be handle separately more efficiently?
+
+### Extensible
+Try to not resolve already solved problems.
 
