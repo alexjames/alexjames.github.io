@@ -7,6 +7,13 @@ categories: sysdesign
 
 Databases are at the heart of modern computer applications. Most applications that do anything useful will probably need the ability to store and query data. Database management systems provide this ability. They are the common thread underlying everything from the smallest of phone applications to humongous distirbuted systems spanning several continents.
 
+#### Types of Data
+What type of data would we want to store in a database? Anything from phone records to entire books. We might also want to store videos, images or music. Computers need data to be in digital format to understand it. From their perspective, anything that can be stored in a file can probably be stored in a database.
+
+It's not just useful to store data, when we can also generate useful insights from it. Let's say you have a folder on your desk with all your utility bills. If you wanted to know the months your bill was below a certain amount, you'd have to look through every bill in the folder. Databases provide ways to quickly query data which helps save time. Different databases are optimized for storing, retrieving and querying different kinds of data. The choice of DBMS depends on your specific application. While most general-purpose databases are good for msot things, you can gain some benefits from using ones better suited for the problems you're trying to solve. 
+With digitization, you could have it all in a small USB Flash Drive. Or even not at all, and have Google or Dropbox store it for you on the cloud.
+
+
 How exactly would applications store data?
 
 ### File System and Flat Files
