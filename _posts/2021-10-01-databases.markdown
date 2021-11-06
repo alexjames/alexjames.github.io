@@ -5,7 +5,8 @@ date:   2019-12-03 09:09:00
 categories: sysdesign
 ---
 
-Databases are at the heart of modern computer applications. Most applications that do anything useful need to store and query data, and they probably have a database underneath.
+Databases are at the heart of modern computer applications. Most applications that do anything useful will probably need the ability to store and query data. Database management systems provide this ability. They are the common thread underlying everything from the smallest of phone applications to humongous distirbuted systems spanning several continents.
+
 How exactly would applications store data?
 
 ### File System and Flat Files
