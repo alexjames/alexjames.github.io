@@ -1,10 +1,31 @@
 ---
-title: "Archive"
+title: "Articles"
 layout: default
 ---
 
 <main>
-  <header><h1>{{ include.title | default: page.title }}</h1></header>
+  <header><h0>{{ include.title | defanavt: page.title }}</h1></header>
+  <h1>System Design</h1>
+  <nav class="smooth">
+    {% for post in site.categories.sysdesign %}
+    <div><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
+    {% endfor %}
+  </nav>
+
+  <h1>Computer Science</h1>
+  <nav class="smooth">
+    {% for post in site.categories.cs %}
+    <div><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
+    {% endfor %}
+  </nav>
+
+  <h1>Web</h1>
+  <nav class="smooth">
+    {% for post in site.categories.webdev %}
+    <div><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
+    {% endfor %}
+  </nav>
+
   <nav class="smooth">
     {% for post in site.posts %}
     <div><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
