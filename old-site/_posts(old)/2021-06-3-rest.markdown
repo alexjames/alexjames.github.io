@@ -1,0 +1,22 @@
+---
+layout: default
+title:  "REST"
+date:   2019-12-03 09:09:00
+categories: webdev
+---
+
+# REST
+REpresentational State Transfer (REST) is an architectural style for building and accessing web services. Separation of concerns, visibility, reliability, scalability and performance are the main goals of REST. The framework specifies a set of principles that a system must follow to be compliant. The criteria are:
+ * client-server architecture - allows for separation of concerns between users and the service, enables scalability
+ * stateless - every request should be independent and complete on its own, should not be dependent on context stored on the server; the client must store session state
+ * cacheability - data should be cacheable by the client to improve performance
+ * uniform interface - the interface should be uniform across components
+ * a layered system - consisting of several layers (caches, load balancers, networks, firewalls, etc)
+ * code-on-demand (optional) - client can download and run executable code in the form of applets or scripts
+
+An API conforming to this style is called a RESTful API and services that follow this criteria are called RESTful web services. While REST doesn't restrict the communication interface to follow any particular protocol, HTTP is the most commonly used one.
+
+
+References:
+
+[1] https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm

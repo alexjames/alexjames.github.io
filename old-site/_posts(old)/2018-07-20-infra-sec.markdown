@@ -1,0 +1,22 @@
+# Reasoning about Infrastructure Security
+### General Idea
+The idea with infrastrucutre security is pretty straight forward. You have a bunch of computing resources in your corporate
+environment which you want to protect from outside attackers. At the same time, you also want to protect your own users
+from themselves - from misconfiguring their services that bring down the entire network, from accidentally deleting
+production images or an upset employee hellbent on wreaking havoc on their last day.
+
+### What we hope to accomplish
+Here are our goals:
+ * Who is accessing what
+ * The identities of everyone involved
+ * Ensuring only those who have the right to perform an action can perform it
+
+### Enumerating Your Resources
+What are the things we want to protect? In 2018, this probably means your production servers, corporate laptops and physical
+hardware on-site.
+
+### Ways of Accomplishing This
+ * Firewalls
+ * VPN
+ * Proxies (forward and reverse)
+ * SSH

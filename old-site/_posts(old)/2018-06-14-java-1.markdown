@@ -1,0 +1,86 @@
+---
+layout: default
+title:  "Java - Log #1"
+date:   2018-06-14 09:09:00
+categories: no
+---
+
+This is a bare-bones Java program. I compiled this using `javac <filename>.java` and ran it using `java <filename>`.
+```
+public class BareBones {
+
+    public static void main(String[] args) {
+    }
+}
+```
+
+If you add the `println` statement to this, it still complies and runs without issues.
+```
+public static void main(String[] args) {
+    System.out.println("Hello World");
+}
+```
+
+If you don't name a class after it's filename, Java complains. Now if you try putting in two public classes in the same file, the compiler
+complains about the other class. Probably cause they're both declare public.
+
+```
+public class BareBonesB {
+
+}
+
+public class BareBones {
+
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+
+RESULT: Compiler unhappy.
+BareBones.java:1: error: class BareBonesB is public, should be declared in a file named BareBonesB.java
+public class BareBonesB {
+       ^
+1 error
+```
+
+But if you get rid of the public accessor from the other class, it works. `public class BareBonesB`  becomes just `class BareBonesB`.
+
+`main` is by definition a static method. So calling an instance method won't work.
+```
+public class BareBones {
+
+    public void doSomething() {
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+        doSomething();
+    }
+}
+
+RESULT: failure
+BareBones.java:9: error: non-static method doSomething() cannot be referenced from a static context
+        doSomething();
+        ^
+1 error
+```
+
+So in some sense, if you want to work in a single Java file, you are forced to make an object of another class and call its methods.
+Unless you only want to call other static methods from the class where main() is defined.
+
+A Java class can instantiate objects of it's own type.
+```
+public class BareBones {
+
+    public void doSomething() {
+        System.out.println("yo!");
+    }
+
+    public static void main(String[] args) {
+        BareBones b = new BareBones();
+        b.doSomething();
+    }
+}
+```
+

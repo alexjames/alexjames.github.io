@@ -1,0 +1,21 @@
+---
+title: "Articles"
+layout: default
+---
+
+<main>
+  <header><h0>{{ include.title | defanavt: page.title }}</h1></header>
+  <h1>Programming</h1>
+  <nav class="smooth">
+    {% for post in site.categories.sysdesign %}
+    <div><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
+    {% endfor %}
+  </nav>
+
+  <h1>Template</h1>
+  <nav class="smooth">
+    {% for post in site.posts %}
+    <div><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
+    {% endfor %}
+  </nav>
+</main>

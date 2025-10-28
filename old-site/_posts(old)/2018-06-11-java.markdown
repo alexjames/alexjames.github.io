@@ -1,0 +1,642 @@
+---
+layout: default
+title:  "Java - Primer"
+date:   2018-06-11 09:09:00
+categories: cs
+---
+
+# Java
+A quick Java recap. Mostly summarized from the Oracle Java trails.
+
+## Object-oriented programming (OOP) concepts
+
+### Object
+Objects are the bed-rock of OOP. An object is the software representation of an entity with it's state and associated behavior.
+State is stored in `fields` and behavior is accessed through `methods`.
+
+### Class
+A class is the template used for creating an object. It forms the blueprint of an object. You use classes to instantiate objects.
+
+```
+public class Person {
+    String name;
+    int age;
+
+    void setName(String new_name){
+        name = new_name;
+    }
+}
+```
+
+### Inheritance
+Objects may be grouped together based on similarity in state and behavior. For example, mountain bikes, road bikes and 
+hybrid bikes are types of bikes. So you have all three classes share a lot of the common state and behavior of a class bike.
+Thus we can have `MountainBike` inherit from class `Bike`. Here, Bike is the superclass and MountainBike is the subclass.
+In Java, each subclass can have only one superclass. But a superclass can have an unlimited number of subclasses.
+
+```
+class MountainBike extends Bike {
+
+}
+```
+
+### Interface
+Interfaces act as a specification for classes. Typically, an interface is a group of related methods with no implementation.
+
+```
+interface Human {
+    void eat();
+    void sleep();
+}
+
+class Man implements Human {
+    void eat() {
+        hunger -= 50;
+    }
+    
+    void sleep() {
+        fatigue -= 80;
+    }
+}
+
+```
+Once you implement an interface, the compiler will ensure that you implement all methods as specifed by the interface.
+
+### Packages
+A package is a namespace that organizes a set of related classes and interfaces.
+
+## Language Basics
+### Variables
+#### Primitives
+Java is statically typed, thus all variables must be declared before use. The language defines the following kinds of
+variables:
+ * Instance variable (non-static): unique to each instance of a class
+ * Class variable (static): Only one copy of this variable will ever exist and it's visibility spans all objects of the class
+ * Local variable: Only visibile within a method
+ * Parameters: passed as arguments to a function
+
+Java variable names are case-sensitive. Though permitted, variable names will typically NOT start with dollar($) or 
+underscore(\_). The method and variable naming convention is to use all lowercase for one-word variables such as *age*, *height*, 
+*sex*, etc. and to capitalize subsequent words in case of two or more lettered words suchs as *currentAge*, *maxPierLength*,
+*totalNumberOfGearsInBike*.
+
+Primitive data types are *literals* that are directly represented in source code, and are not objects created from a 
+class. These are Java's primitive data types:
+
+Name | Size (bits) | Range
+--- | --- | ---
+byte | 8 | -128 to 127
+short | 16 | -32768 to 32767
+int | 32 | -2^31 to 2^31 - 1
+long | 64 | -2^61 to 2^61 - 1
+float | 32 | 32-bit IEEE floating point
+double | 64 | 64-bit IEEE floating point
+boolean | und. | true/false
+char | 16 | UTF-16
+
+Java also support strings natively through the `java.lang.String` class, so they've come to be thought of as primitive 
+data types. Java strings are immutable, thus once created, their values cannot be changed.
+
+Variables that are not initialized are assigned a default value, usually 0 or null by the compiler. 
+The only exception are local variables, which will generate a compile-time error if you access them un-initialized.
+
+Here are example data-type declarations along with their associated literals:
+
+```
+int ten = 10;
+int hexval = 0x2a;
+int binary = 0b001101;
+double d = 123.4
+long l = 14324L;
+float f1 = 12.3f;
+```
+When unspecified, literals with a decimal point are double by default and those without are int be default.
+
+Java 7 onwards, you can now put underscores in between numbers for logical grouping/readability.
+```
+long whiteHousePhoneNumber = 202_456_1414;
+```
+
+#### Arrays
+An array is a container that holds a fixed number of elements of a certain type. They are accessed by a numerical index
+starting from 0..(N-1) where N is the number of elements. They are typically declared using *type[]*.
+```
+int[] myArray;
+int myArrayNotRecommended[];   // C-like, also allowed, but convention discourages it
+
+myArray = new int[3];
+...
+myArray[2] = 9;
+```
+
+Arrays have a built-in `length` method to print their size. The `System` class has an `arraycopy` method which can be used
+to copy array elements from one array into another.
+
+```
+public static void arraycopy(Object src, int srcPos,
+                             Object dest, int destPos, int length)
+...
+int[] arrTo = new int[5];
+int[] arrFrom = {1, 2, 3, 4, 5};
+System.arraycopy(arrFrom, 0, arrTo, 0, 5);
+```
+### Operators
+Java has support for arithmetic, logical, bitwise and ternary operators with syntax and behavior similar to other 
+programming languages. There are separate signed (>>, <<) and unsigned (>>>, <<<) left/right shift operators.
+
+### Conditional Flow Statements
+if-blocks are similar to other languages.
+
+```
+if (isRaining) {
+    person.open_umbrella();
+} else if (isSunny) {
+    person.put_sunscreen();
+} else {
+    person.walk_outside();
+}
+```
+
+switch-blocks work for byte, short, char, int, enums, String and a few other wrapper types such as Byte, Integer, etc.
+```
+switch (day) {
+    case 1:
+        name = "alex";
+        break;
+    case 2:
+        name = "kevin";
+        break;
+    default:
+        name = "everybody else";
+        break;
+}
+
+switch (month) {
+    case "january":
+        monthNum = 1;
+    case "february":
+        monthNum = 2;
+}
+```
+for, while and do-while are the same as other languages.
+```
+for (int i = 0; i < 10; i++) {
+
+}
+
+while (true) {
+    // do stuff
+}
+
+
+do {
+    //stuff
+} while (count > 5);
+```
+continue, break and return behave as you would expect.
+
+## Classes and Objects
+This is the skeleton of what a class declaration looks like:
+
+```
+class MyClass {
+    // fields
+    // constructor
+    // method declarations
+}
+```
+Access modifiers determine the visibility of classes, interfaces and members. Here are the two levels that are available:
+ * top level (class/interface declaration) - public or package-private (default, no explicit modifier)
+ * member level (within class or interface) - public, private, protected and package-private (default, no explicit modifier)
+
+`public` means pretty much any class anywhere within or outside the package can access an element. `private` means only within
+a class or interface. No explicit modifier implies pacakge-private which means any class within a package has access.
+The only tricky one is `protected`. Protected variables are accessible completely within a package (same as package-private),
+and in addition, are also visible by *any subclass in another package*. This means that within a package, any member that
+is not `private` is accessible to all anyway. But marking a member as `protected` allows a *public* class being inherited to
+have that member accessible to its subclass which lies in another package.
+This has several implications. When you're sitting in one package and decide to inherit (extend) a class from another package,
+you can't access *anything* of the super-class unless it is marked as either `public` or `protected`. When no access modifier
+is specified, you be at peace knowing that nothing outside your package can interfere with your business. `public` should 
+probably be used sparingly. At the top level, you can only specify "inside this package" or "outside this package".
+
+In terms of naming conventions, classes have the first letter of every word capitalized. For example, MountainBike,
+MyClass, etc. Methods have the same naming convention as variables i.e. first word all lower-case followed by remanining
+words capitalized, except the first word should prefereably be a verb. For example, *showName()*, *getUserAge()*, etc.
+
+Methods can also be *overloaded*, i.e. the same method name can be used to perform different operations, and they are
+distinguised by their method signatures. So instead of having a separate methods like *walkDog()*, *walkCat()*, *walkPony()*,
+you can have a separate *walk()* methods taking in different parameters. Thus you have *walk(Dog d)*, *walk(Cat c)* etc.
+It's pretty easy for a compiler to figure out which method you intended to call. Note that return values are not checked
+as part of the signature by the compiler, so you can't have two methods with the same name but different return types.
+
+```
+This does NOT work:
+void setName(String new_name){}
+int setName(String new_name) {}
+```
+
+Constructors are invoked at the time of object creation. Constructors have the same name as the class with not return value.
+Java allows multiple constructors as long as they differ in their signature.
+
+```
+    Person() {        // no-argument constructor
+        name = "FNU";
+    }
+    
+    Person(String myName) {
+        name = myName;
+    }
+...
+Person p = new Person();
+Person q = new Person("Alex");
+```
+
+Java quirks: When a class doesn't have a constructor declared, the compiler will generate a default no-argument constructor
+which calls the default no-argument constructor of the superclass. If the superclass does not have a default constructor,
+the compiler will complain. In Java, by default, every class with no superclass has `Object` as it's implicit superclass. 
+`Object` DOES have a default constructor so you typically won't see this error. Thus, when creating base classes within
+your Java programs, make sure you have a default constructor, even if it doesn't do anything.
+
+Construtors have access specifiers dicatating who can access it's constructors. If a certain class cannot access any 
+constructor of a given class, it cannot instantiate objects of that given class.
+
+Methods (and constructors) can accept variable length arguments by defining the type of the ***last*** parameter of the method
+as *type...* (three dots). This converts the parameter into an array of the type and can be used like any regular array.
+
+```
+    void tryVarArgsMethod(int... intsArray) {
+        for (int x : intsArray) {
+            System.out.println(x);
+        }
+    }
+```
+
+Primitive data types are passed by *value*, and so are objects. However, the values of an object's fields can be changed by
+a method if it can access them.
+
+Objects are created using the `new` operator. `new` also invokes the constructor.
+
+```
+Point p = new Point(15, 234);    // stores a reference to a newly created Point object in variable p
+```
+JVM internally maintains references to objects and frees them up when they are no longer referenced. References are 
+decremented when a variable goes out of scope or you set the variable's value to null. All references to an object must
+be dropped before JVM can garbage collect the object.
+
+When a method returns a class name, the it can return an object of either the same class or subclass. But not it's superclass.
+For example, if Object -> Human -> Person and you have a method `Human getMammal()`, you can have the method return either
+a *Human* object or a *Person* object. This is because a *Person* is a kind of *Human*. But getMammal() cannot return an
+*Object*.
+
+The *this* keyword is used to refer to the current object. Constructors can have fields *shadowed* by a method or constructor
+parameter i.e. the fields of the class can have the same name as parameters. In such cases, *this* is used to resolve the
+ambiguity.
+
+```
+public class Person {
+    String name;
+    int age;
+
+    Person(String name) {   // parameter 'name' is the same as field 'name', field name is thus being shaddowed.
+        this.name = name;
+    }
+}
+```
+
+*this* can also be used from within a constructor to call another constructor of the same class.
+
+```
+public MyClass() {
+    this("default", 9);
+}
+
+public MyClass(String name, int size) {
+    // do stuff
+}
+```
+
+If a class is declared ***public***, it is accessible to classes everywhere. If a class is declared ***private*** or has no 
+modifier, it is only visible within the package where it is declared.
+
+If a member variable is ***public*** or has no modifier, it is accessible by everyone. If a member variable is ***private***,
+it can be accessed only within its own class. If a member variable is ***protected***, it can be accessible within its own
+package as well as by any subclass in another package.
+
+Quick summary: member variables are public by default, classes are private be default. Unless you have a good reason, most
+members should be private. 
+
+A static member variable has a single instance associated with it, while a static member function can be invoked without
+needing to create an object of the class. A method that is declared static is called a class method. Regular (non-static)
+methods are called instance methods. Since class methods are not associated with an object (an hence no memory actually
+allocated for them), they cannot directly access an object's instance variables or instance methods, unless they are passed
+by reference. Also, you cannot use the *this* keyword.
+
+Constants are declared using the *final* keyword and all upper-case letters by convention.
+```
+static final int NUMBER_OF_GEARS = 4;
+```
+
+The initialization of instance variables can be done directly in the class declaration or the constructor. However,
+considering the semantics of class variables, it is easy to see that if you wanted some complex initialization logic
+for these, you couldn't put them in any constructor. This is because constructors are invoked during object creation and
+static members or methods don't need an instance of an object to be invoked. So how does Java handle this? They provide
+*static initialization blocks* or alternatively, *private static* initialization methods.
+
+```
+public class Person {
+    static String species;
+    static int age = initStaticVars();  // call to private static method
+
+    static {                            // static block
+        if (true) {
+            species = "human";
+        } else {
+            species = "mammal";
+        }
+    }
+
+    private static int initStaticVars() {     // private static method used to initialize static members
+        int i;
+        for (i = 0; i < 10; i++);
+        return i;
+    }
+}
+```
+
+You can have multiple static blocks in a class and the runtime gaurantees that they will be called in the order in which
+they appear in the class. Instead of a static block, if you have a regular block ({ }) in a class, they will be called
+in every constructor when an object is created. This can be used to share common code across multiple constructors.
+
+### Enums
+Enums allow the declaration of pre-defined constants. In Java, enums are basically classes which provide functions such
+as *values()*, which enumerates all available enumerated types.
+```
+public enum Day {
+    SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
+    THURSDAY, FRIDAY, SATURDAY 
+}
+
+System.out.println(Day.SUNDAY);
+```
+
+### Nested Classes
+Java allows classes to have nested classes. Why use nested classes? For cases when you have a class that
+will *only* ever be used by one other class. This allows encapsulation and has the added benefit of accessiblity of the private
+members of the enclosing class.
+As members of a class, nested classes may be declared static or non-static ("inner"). Non-static nested classes can access members of
+ the enclosing (outer) class, even those declared private. Static nested classes cannot access member variables of the
+ enclosing class.
+
+```
+class OuterClass {
+
+    InnerClass in;
+
+    public class InnerClass {
+
+        static void doInnerStuff() {
+            System.out.println("yay!");
+        }
+    
+    }
+
+    void doOuterStuff() {
+
+        InnerClass in = new InnerClass();
+        in.doStuff();
+    }
+
+}
+```
+
+A nested class is a member of its enclosing class. Static nested classes are more restrictive in what they can do and hence
+more isolated. In terms of design, you start out with a static nested class and then decide if you want to make it non-static.
+
+In terms of reasoning about memory allocation, you can directly instantiate a static nested class since it will never
+access any of the outer class's memory anyway. But you cannot instantiate a non-static nested class directly since it
+needs the outer class to have been allocated as well.
+
+```
+public class Test{
+	int a;
+
+	class NestedClass{
+		String lol = "inside!";
+	}
+}
+
+Test.NestedClass n = new Test.NestedClass();    // WORKS if NestedClass is static.
+Test.NestedClass n = new Test.NestedClass();    // DOESN'T work.  error: an enclosing instance 
+                                                           that contains Test.NestedClass is required
+```
+
+There are two additional types of inner classes. Those declared within the body of a method are called local classes.
+Those declared within the body of a method without naming the class are called anonymous classes.
+
+### Local classes
+
+```
+public class BareBones {
+
+    public static void local_class() {
+        class ThisIsLocal{
+             int return4() {
+                return 4;
+            }
+        }
+
+        ThisIsLocal l = new ThisIsLocal();
+        System.out.println(l.return4());
+    }
+
+
+    public static void main(String[] args) {
+        OuterClass out = new OuterClass();
+        out.doOuterStuff();
+        local_class();
+    }
+}
+```
+Local classes have access to member variables of the enclosing class visible inside the method they are declared in. They can also
+access local variables declared final within the body of the method. Local classes cannot declare any static members.
+### Anonymous Classes
+If you have to use a local class only once, you can make use of an anonymous class. Anonymous classes are expressions and not
+declarations, so they are used as part of expressions. Anonymous class are defined as either implementing an interface or extending a class. Local classes cannot contain interfaces, however.
+```
+public class Anon {
+
+    interface SaySomething {
+        void say();
+    }
+
+    static void anonymousClassExample() {
+
+        SaySomething hello = new SaySomething() {
+            @Override
+            public void say() {
+                System.out.print("Hello!");
+            }
+        };
+
+        hello.say();
+    }
+
+    public static void main(String[] args) {
+        anonymousClassExample();
+    }
+}
+```
+
+### Lambdas
+Sometimes, you need functionality for limited use in a small scope. Anonymous classes might be overkill for say a single function.
+Enter lambdas. The fundamental premise with lambdas are that you pass functions as arguments to another function OR 'code as data'.
+
+## Interfaces and Inheritance
+Interfaces are like contracts that implementing classes have to adhere to. In Java, an interface is a reference type, 
+similar to a class, that only contains constants, method signatures, static/default methods and nested types. Interfaces
+cannot be instantiated - only implemented by other classes. And they can only be extended by other interfaces. This makes
+sense since an interface is basically a specification and you want the ability for specification to be built on top of 
+other specifications. Unlike classes, which can only extend a single class, interfaces can extend multiple interfaces at
+once. Interfaces are meant to declare public interfaces, thus all members are implicitly `public`.
+
+```
+interface MySpec {
+	int someValue = 5;
+	void someFunction();
+}
+```
+Members of an interface can only be public (there's no point of them being private or protected, these are
+specifications!).
+
+When you define an interface, you are essentially defining a new type. This type can used in many interesting ways.
+Here is an interface for a class for V8 engines. This defines a function that *compareHP* which compares the horse-power
+of two different cars, both of which have V8 engines (implement the V8 spec).
+
+```
+interface V8 {
+	int numCylinders = 8;
+	void makeNoise();
+	int compareHP(V8 car1, V8 car2);
+}
+```
+Any class (or it's subclass) that implements the V8 spec can be passed as parameters to *compareHP*. Any of car1 or car2
+objects can be used to invoke members of the interface. For example, *car1.numCylinders* or *car2.makeNoise()*. 
+Similarly, you can also type cast car1 or car2 to an object of a type that implements an interface.
+```
+class FordMustang implements V8 {
+}
+
+class DodgeCharger implements V8 {
+}
+
+...
+V8 car1 = new FordMustang();
+FordMustang c1 = (FordMustang) car1;
+DodgeCharger d1 = (DodgeCharger) car1; // does NOT work, runtime exception!
+
+// You still need to ensure you pass the right object type into the right place
+```
+Intefaces have their methods declared as abstract by default. However, you can also change their declaration to `default`
+or `static`. `default` methods are actually implemented in the interface and allow interfaces to be extended without 
+needing them to be recompiled. `static` methods in interface are like static methods in classes - associated with the
+interface.
+
+Inheritance permits re-use of code. The subclass (or child class or derived class) inherits from the superclass (or base class
+or parent class). Methods and members of the superclass are inherited by the subclass, but not the constructors. Though the
+superclass's constructor can be invoked exlicitly by using `super`.
+
+Because the subclass contains (or overrides all the behavior of the superclass), a reference to the superclass can point
+to an object of the type of the subclass. But you can't do it backwards. Similarly, if Animal --> Cat, and a function
+has a return type of Animal, you can also return back a Cat. This is because a Cat is an Animal i.e. a subclass is basically
+a version its superclass. 
+
+```
+Object obj = new HybridBike();  // this works
+
+HybridBike b = obj;             // this does NOT work, an object is not necessarily a HybridBike
+
+// Workaround:
+if (obj instanceof HybridBike) {
+	HybridBike b = (HybridBike) obj; 
+}
+```
+
+An instance method in a subclass with the same signature as the superclass *overrides* the superclass's method. When you
+expect a method you've written to override a method from the superclass, you can make use of the @Override annotation.
+This annotation will check if you actually overrode a method or not. You could hit this sort of issue if you, for instance,
+had an incorrect signature and thought you were overriding a baseclass method, but actually didn't. The @Override annotation
+does a compile time check to ensure that there is actually a superclass whose method gets overridden by your method.
+
+Fields and static methods in a subclass with the same signature as the superclass gets *hidden* from the superclass's method.
+The difference between getting overridden and hidden is that an overridden method or field is always the one in the subclass.
+While, the hidden member that is referenced depends on the type of reference being made to the object i.e. subclass or 
+superclass.
+
+```
+class Animal {
+	public int bones;
+	public static void staticMethod();
+	public void instanceMethod();
+}
+
+class Dog extends Animal {
+	public int bones;
+	public static void staticMethod();
+	public void instanceMethod();
+}
+
+
+Dog d = new Dog();
+d.staticMethod();             // Dog's static method
+d.instanceMethod();           // Dog's instance method
+d.bones = 5;                  // Dog's bones
+
+Animal a = new Dog();
+a.staticMethod();             // Animal's static method
+a.bones = 5;                  // Animal's bones
+a.instanceMethod();           // Dog's instance method
+```
+
+You can use `super` to invoke the constructor of the superclass. It must be the first line of the subclass constructor. You 
+can also use the `super` keyword to refer to methods in the superclass.
+```
+@Override
+void doStuff () {
+	super.doStuff();    // resolve ambiguity as to which doStuff() you're calling.
+
+}
+```
+
+If you do not explcitly all a superclass constructor, the default constructor of the superclass is called in the first line
+of the subclass constructor. This ensures that the base class object is created and initialiazed before any derived class code
+is run. This happens through the entire chain of inheritance, all the way upto `Object`, which all classes extend. 
+
+If you put a final next to a method, it cannot be overridden. A class that is defined final cannot be inherited from. It's
+good practice to declare all methods called by constructors final, so that subclasses don't override them and produce 
+un-intended behavior.
+
+Abstract classes are classes that cannot be instantiated, but can be inherited from. Abstract methods have no function body,
+but must be defined in the inheriting subclasses. They are effectively like interfaces, except with more control in terms of
+defining the visibilty of members, and declaring non-static/non-final fields.
+
+```
+public abstract class AbstractClassExample {
+	abstract private void doStuff();
+}
+```
+
+## Annotations
+TBD
+
+
+## Exceptions
+When an error occurs within a method, it can create an object and hand it over to the runtime detailing the problem. Since
+this is object oriented programming, even exceptions are objects. The exception object contains information about the type of
+error and the state of the program at the time the error occured.
+
+When the runtime encouters an exception, it looks through the current call stack in reverse order, looking for a handler for the
+exception This means that if the current method is not designed to handle this exception, the expection is passed onto its
+caller. A handler match is found if the type of exception matches the type that can be handled by the handler. The object is
+then passed to this handler to process. The exception handler catches the exception and begins execution. If the runtime cannot
+find this an appropriate handler, the execution of the program is stopped.
