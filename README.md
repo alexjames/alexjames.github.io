@@ -1,69 +1,87 @@
-# Jekyll Cayman theme
+---
+title: "About"
+permalink: "/about/"
+layout: page
+---
 
-This is a [Jekyll][1] theme for [@jasonlong][2]'s [Cayman theme][4] on [GitHub Pages][3].
+## Github Pages
 
-Cayman is a clean, responsive theme for [GitHub Pages](https://pages.github.com). This theme is available as an option if you use the [Automatic Page Generator](https://help.github.com/articles/creating-pages-with-the-automatic-generator/) or you can copy the template and styles to use on your own.
+Just fork this [repository](https://github.com/niklasbuschmann/contrast) to `your_username.github.io` and adjust the `_config.yml` to use with [Github Pages](https://pages.github.com/) and your page is done.
 
-You can preview the theme at http://jasonlong.github.io/cayman-theme or with real content at http://jasonlong.github.io/geo_pattern.
+## Features
 
-![](http://cl.ly/image/1T3r3d18311V/content)
+ - dark mode
+ - [KaTeX](https://katex.org) included
+ - no external ressources
+ - optional sidebar
+ - archive page
+ - syntax highlighting
+ - supports comments via [disqus](https://disqus.com/) or [isso](http://posativ.org/isso/)
 
-# How to use it?
+## Installation
 
-Download the theme @ http://github.com/pietromenna/jekyll-cayman-theme/archive/master.zip
-
-Unzip it and use it as a regular jekyll folder.
-
-```
-$ unzip jekyll-cayman-theme-master.zip
-```
-
-Get inside the newly extracted folder
-```
-$ cd jekyll-cayman-theme-master
-```
-
-Get the required gems
-```
-$ bundle install
-```
-
-Use it!
+To run locally [install Ruby](https://www.ruby-lang.org/en/documentation/installation/) and then run:
 
 ```
-$ jekyll serve
+git clone https://github.com/niklasbuschmann/contrast.git
+cd contrast
+gem install bundler jekyll jekyll-feed
+bundle exec jekyll serve
 ```
 
-For more details read about [Jekyll][1] on its web page.
+## Config
 
-# Setup
+Your `_config.yml` could for example look like this:
 
-Some important configuration can be done in the file `_config.yml`. Please, check the Setup section in that file.
+```yaml
+title: "Blog Title"
+author: "Blog Author"
+description: "My blog"
+permalink: /:title/
+lang: "en"
+excerpt_separator: "\n\n\n"
+date_format: "%B %d, %Y"
 
+# Layout
 
-## baseurl
+show_excerpts: true             # show article excerpts instead of archive list on the home page
+show_frame: true                # display a grey frame on large screens
+show_sidebar: false             # show a sidebar instead of the usual header
+show_minimal: false             # remove all clutter
 
-`baseurl` parameter is required in the case the site doesn't sit on the root of the domain. For example: http://pietromenna.github.io/jekyll-cayman-theme
+# Menu                          # for available icons see https://fontawesome.com/v5/icons/
 
-In the case above the baseurl should be set to "/jekyll-cayman-theme".
+navigation:                     # accepts {file, title, url, icon, sidebaricon}
+  - {file: "archive.html", sidebaricon: home}
+  - {file: "README.md", sidebaricon: address-card}
 
-In the case the site sits in the root, you can leave `baseurl` as empty "".
+external:                       # accepts {file, title, url, icon, sidebaricon}
+  - {title: Mail, icon: envelope, url: "mailto:author@example.com"}
+  - {title: Github, icon: github, url: "https://github.com/"}
+  - {title: Subscribe, icon: rss, url: "/feed.xml"}
 
-# Contributing
+comments:
+#  disqus_shortname: ""         # see https://disqus.com
+#  isso_domain: ""              # see https://isso-comments.de
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/pietromenn/jekyll-cayman-theme.
+plugins:
+ - jekyll-feed
+```
 
-# Development
+## Math
 
-To set up your environment to develop this theme, run `bundle install`.
+Contrast comes preinstalled with a leightweight alternative to MathJax called [KaTeX](https://katex.org/). To display equations in a post simply set `mathjax: true` in the article's front matter. [Jektex](https://github.com/yagarea/jektex) can be used to pre-render math on the server side.
 
-You theme is setup just like a normal Jelyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
+## License
 
-# License
+[public domain](http://unlicense.org/)
 
-This work is licensed under a [Creative Commons Attribution 4.0 International](http://creativecommons.org/licenses/by/4.0/) license.
+## Screenshots
 
-[1]: http://jekyllrb.com/
-[2]: https://github.com/jasonlong
-[3]: http://pages.github.com/
-[4]: https://github.com/jasonlong/cayman-theme
+![screenshot](https://github.com/user-attachments/assets/8f0ef4bc-f079-495e-8c31-5867b8ccd25c)
+
+![screenshot](https://github.com/user-attachments/assets/e5e6d189-3251-41f4-baba-ff42be65f666)
+
+![screenshot](https://github.com/user-attachments/assets/d31879ae-7113-42be-b580-1e96a2aedd29)
+
+![screenshot](https://github.com/user-attachments/assets/d524ce47-8d8c-473e-afc6-79b34fae63e8)
