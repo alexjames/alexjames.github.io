@@ -1,5 +1,7 @@
 ---
 layout: default
 ---
-
-{{ content }}
+<article>
+  {% include meta.html post=page %}
+  {{ content }}
+</article>

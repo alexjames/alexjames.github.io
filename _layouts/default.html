@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  
-  {% include head.html %}
+<html lang="{{ page.lang | default: site.lang }}">
 
-  <body>
-    {% include page-header.html %}
+{% include head.html %}
 
-    <section class="main-content">
-      
-      {{ content }}
+<header class="hover smooth">
+  {% unless site.show_minimal and site.navigation and site.external %}
+    <h1 {% if site.navigation and site.external %}class="full"{% endif %}><a href="{{ "/" | relative_url }}">{{ site.title | escape }}</a></h1>
+  {% endunless %}
+  {% include menu.html menu=site.navigation %}
+  {% include menu.html menu=site.external %}
+</header>
 
-      {% include page-footer.html %}
+{{ content }}
 
-    </section>
+{%- if site.footer -%}
+<footer class="hover">
+  <div>{{ site.description }}</div>
+  {% include menu.html menu=site.footer %}
+</footer>
+{%- endif -%}
 
-  </body>
 </html>

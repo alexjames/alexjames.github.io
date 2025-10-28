@@ -1,0 +1,36 @@
+---
+layout: default
+title: {{ site.name }}
+---
+
+<div id="home">
+
+This is my Alex's personal webpage and online journal for documenting things. Here you'll find notes on CS and systems design.
+
+  <h1>System Design</h1>
+  <ul class="posts">
+    {% for post in site.categories.sysdesign %}
+      <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <h1>Computer Science</h1>
+  <ul class="posts">
+    {% for post in site.categories.cs %}
+      <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <h1>Web</h1>
+  <ul class="posts">
+    {% for post in site.categories.webdev %}
+      <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <h1>Brief Excursions</h1>
+This is where I document things I play around with. These do not follow a set theme, nor are they meant to be 
+particularly insightful.
+
+
+</div>
