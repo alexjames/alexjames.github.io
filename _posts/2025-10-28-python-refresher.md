@@ -11,7 +11,7 @@ Here is a quick Python refresher.
 
 ## Data Structures
 
-| Operation | List | Dictionary | Set |
+| | List | Dictionary | Set |
 |---|---|---|---|
 | Description | Mutable, ordered collection of arbitrary Python objects. Internally these are implemented as arrays, allowing <span style='font-size:12px'>$$O(1)$$</span> indexed access. Inserting or removing at the beginning of the list is <span style='font-size:12px'>$$O(N)$$</span> because all elements after that need to be moved. Insertions may also trigger array growth, resulting in re-allocation and copying all elements to the new location. Mutations at the end of the list are <span style='font-size:12px'>$$O(1)$$</span>.| Mutable, unordered collection of key-value pairs. Keys are unique and cannot be mutable. Represented internally as a hash table, using the open addressing with probing strategy for key allocation. The average time complexity for most operations is <span style='font-size:12px'>$$O(1)$$</span> and <span style='font-size:12px'>$$O(N)$$</span> in the worse case. | Mutable, unordered collection of unique Python objects. Support mathematical set operations such as union, intersection and difference. Cannot contain mutable objects. Implementation very similar to dictionaries. The average time complexity for most operations is <span style='font-size:12px'>$$O(1)$$</span> and <span style='font-size:12px'>$$O(N)$$</span> in the worse case. |
 | Creation | <code>l = []</code><br><code>l = [1, 2, 3]</code> | <code>d = {}</code><br><code>d = {"k1": 1, "k2": 2}</code><br><code>d = dict(foo=1, bar='nope')</code> | <code>s = set()</code><br><code>s = {1, 2, 3}</code><br><code>s = set([1, 2, 3])</code> |
@@ -23,11 +23,12 @@ Here is a quick Python refresher.
 | Size<br><br>_attribute of container, always <span style='font-size:12px'>$$O(1)$$</span>_ | <code>len(l)</code> | <code>len(d)</code> | <code>len(s)</code> |
 | Equality | <code>l1 == l2</code> | <code>d1 == d2</code> | <code>s1 == s2</code> |
 | Combine | <code>l1 + l2</code><br><code>l1.extend(l2)</code> | <code>d1 | d2</code><br><code>d1 |= d2</code> | <code>s1 | s2</code><br><code>s1 |= s2</code> |
-| Unique Opns | <code>l.sort()</code><br><br><code>l.reverse()</code> | <code>d1 | d2</code> _union_<br><br><code>d1 & d2</code> _intersection_<br><br><code>d1 - d2</code> _difference_<br><br><code>d1 ^ d2</code> _symmetric difference_ |<code>s1 | s2</code> _union_<br><br><code>s1 & s2</code> _intersection_<br><br><code>s1 - s2</code> _difference_<br><br><code>s1 ^ s2</code> _symmetric difference_ |
+| Unique Operations | <code>l.sort()</code><br><br><code>l.reverse()</code><br><br><code>l.count(x)</code> _number of occurences of x_<br><br><code>l.index(x)</code> _index of first occurence of x_ | <code>d1 | d2</code> _union_<br><br><code>d1 & d2</code> _intersection_<br><br><code>d1 - d2</code> _difference_<br><br><code>d1 ^ d2</code> _symmetric difference_ |<code>s1 | s2</code> _union_<br><br><code>s1 & s2</code> _intersection_<br><br><code>s1 - s2</code> _difference_<br><br><code>s1 ^ s2</code> _symmetric difference_<br><br><code>s1 < s2</code> _True if s1 subset of s2_<br><br><code>s1 > s2</code> _True if s1 superset of s2_ |
 
 All built-in containers support the functions `min`, `max`, `sum`, `sorted`, `reversed`, `enumerate` and `zip`.
 
-Assignments using `=` sets the variable to point to the same location in memory. To create a true (deep) copy, use the `deepcopy` function.
+Assignments using `=` sets the variable to point to the same location in memory, referencing the same object. Using a container's `copy()` function creates a shallow copy i.e. top-level immutable types like integers and strings will be copied over, while only references to nested objects such as lists will be copied.
+To create a true (deep) copy of everything included nested objects, use the `deepcopy` function.
 
 ```python
 import copy
@@ -37,6 +38,14 @@ new_dict = old_dict
 
 ### CORRECT
 new_dict = copy.deepcopy(old_dict)
+```
+
+### List Comprehensions
+List comprehensions provide a concise way to create new lists.
+```python
+squares = [x**2 for x in range(10)]
+
+even_nums = [x for x in range(-10, 10) if x % 2 == 0]
 ```
 
 ## References
