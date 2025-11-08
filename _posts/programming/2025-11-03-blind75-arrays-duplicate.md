@@ -32,7 +32,7 @@ def containsDuplicate(self, nums: List[int]) -> bool:
     return False
 ```
 
-### Set Conversion
+### Pythonic: Set Conversion
 ```python
 def containsDuplicate(self, nums: List[int]) -> bool:
     return len(set(nums)) != len(nums)
