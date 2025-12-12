@@ -10,7 +10,8 @@ categories: programming
 
 ## Solutions
 ### Brute Force
-Check every pair of elements for a duplicate. O(n^1).
+Check every pair of elements for a duplicate.
+- Time complexity: <span style='font-size:16px'>$$O(n^2)$$</span>
 
 ```python
 def containsDuplicate(self, nums: List[int]) -> bool:
@@ -22,6 +23,9 @@ def containsDuplicate(self, nums: List[int]) -> bool:
 ```
 
 ### Dictionary Lookup
+- Time complexity: <span style='font-size:16px'>$$O(n)$$</span>
+- Space complexity: <span style='font-size:16px'>$$O(1)$$</span>
+
 ```python
 def containsDuplicate(self, nums: List[int]) -> bool:
     lookup = {}
@@ -39,7 +43,8 @@ def containsDuplicate(self, nums: List[int]) -> bool:
 ```
 
 ### Sort Array
-Duplicate elements will appear next to each other when the array is sorted. O(n log n).
+Duplicate elements will appear next to each other when the array is sorted.
+- Time complexity: <span style='font-size:16px'>$$O(n \log n)$$</span>
 
 ```python
 def containsDuplicate(self, nums: List[int]) -> bool:

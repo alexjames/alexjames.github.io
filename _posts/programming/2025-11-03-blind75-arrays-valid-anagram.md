@@ -15,8 +15,8 @@ For the two strings to be anagrams, their character frequencies must be equal.
 
 ### Sorting
 Sorting both strings should result in the same string.
-- Time Complexity: O(nlogn)
-- Space Complexity: O(26) -> O(1)
+- Time Complexity: <span style='font-size:16px'>$$O(n \log n)$$</span>
+- Space Complexity: <span style='font-size:16px'>$$O(26)$$</span> -> <span style='font-size:16px'>$$O(1)$$</span> 
 
 ```python
 def isAnagram(self, s: str, t: str) -> bool:
@@ -24,8 +24,8 @@ def isAnagram(self, s: str, t: str) -> bool:
 ```
 
 ### Using A Character Frequency Array
-- Time Complexity: O(n)
-- Space Complexity: O(26) -> O(1)
+- Time Complexity: <span style='font-size:16px'>$$O(n)$$</span>
+- Space Complexity: <span style='font-size:16px'>$$O(26)$$</span> -> <span style='font-size:16px'>$$O(1)$$</span> 
 
 ```python
 def isAnagram(self, s: str, t: str) -> bool:
@@ -44,8 +44,8 @@ def isAnagram(self, s: str, t: str) -> bool:
 ```
 
 ### Comparing two Character Frequency Arrays
-- Time Complexity: O(n)
-- Space Complexity: O(26) -> O(1)
+- Time Complexity: <span style='font-size:16px'>$$O(n)$$</span>
+- Space Complexity: <span style='font-size:16px'>$$O(26)$$</span> -> <span style='font-size:16px'>$$O(1)$$</span> 
 
 ```python
 def isAnagram(self, s: str, t: str) -> bool:
@@ -61,8 +61,8 @@ def isAnagram(self, s: str, t: str) -> bool:
 ```
 
 ### Pythonic: Using Counter
-- Time Complexity: O(n)
-- Space Complexity: O(26) -> O(1)
+- Time Complexity: <span style='font-size:16px'>$$O(n)$$</span>
+- Space Complexity: <span style='font-size:16px'>$$O(26)$$</span> -> <span style='font-size:16px'>$$O(1)$$</span> 
 
 ```python
 def isAnagram(self, s: str, t: str) -> bool:

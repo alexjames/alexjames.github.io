@@ -14,7 +14,7 @@ categories: programming
 For the two strings to be anagrams, the character frequencies of both strings must be equal.
 
 ### Brute Force
-- Time Complexity: O(n^2)
+- Time Complexity: <span style='font-size:16px'>$$O(n^2)$$</span>
 
 ```python
 def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -26,8 +26,8 @@ def twoSum(self, nums: List[int], target: int) -> List[int]:
 ```
 
 ### Dictionary Lookup
-- Time Complexity: O(n)
-- Space Complexity: O(n)
+- Time Complexity: <span style='font-size:16px'>$$O(n)$$</span>
+- Space Complexity: <span style='font-size:16px'>$$O(n)$$</span>
 
 ```python
     def twoSum(self, nums: List[int], target: int) -> List[int]:

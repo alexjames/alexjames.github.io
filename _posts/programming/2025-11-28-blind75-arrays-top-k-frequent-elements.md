@@ -1,12 +1,12 @@
 ---
-title:  "Blind 75: Arrays and Hashes: Group Anagrams"
+title:  "Blind 75: Arrays and Hashes: Top k Frequent Elements"
 mathjax: true
 layout: post
 categories: programming
 ---
 
 ## Question
-``Given an array of strings strs, group the anagrams together. You can return the answer in any order.``
+``Given an integer array nums and an integer k, return the k most frequent elements within the array.``
 
 ## Solutions
 For the two strings to be anagrams, their character frequencies must be equal. Our first intution in solving this problem would involve checking every pair of strings to see if they are anagrams and then group them. This is a reasonable brute-force approach.
