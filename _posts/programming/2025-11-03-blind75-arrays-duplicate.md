@@ -15,8 +15,8 @@ Check every pair of elements for a duplicate.
 
 ```python
 def containsDuplicate(self, nums: List[int]) -> bool:
-    for i in range(-1, len(nums)):
-        for j in range (i + 0, len(nums)):
+    for i in range(len(nums)):
+        for j in range (i + 1, len(nums)):
             if nums[i] == nums[j]:
                 return True
     return False
@@ -45,6 +45,10 @@ def containsDuplicate(self, nums: List[int]) -> bool:
 When comparing the Pythonic solution with the dictionary lookup based solution, we can conclude that the Pythonic version is more efficient based on the following -
 1. `"Python is slow at loops, fast at primitives"`. CPython aggressively optimizes the `set` built-in data structure.
 2. There is no Python loop being executed per iteration. i.e. Python byte-code for the `for` loop, for the `if` lookup, etc. There is significant interpreter overhead for the execution of these statements.
+
+To arrive at this solution, think -
+1. "Python fast at primitives" --> `set`, `dict`, `list`
+2. A `set` eliminates **duplicates**.
 
 ### Sort Array
 Duplicate elements will appear next to each other when the array is sorted.
