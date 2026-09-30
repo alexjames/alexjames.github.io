@@ -22,5 +22,30 @@ A better visualization is to think of the boundary and imagine an entire side di
 ### Sorting by start time 
 ```python
 class Solution:
+    def spiralOrder(self, matrix: list[list[int]]) -> list[int]:
+        left, right = 0, len(matrix[0])
+        top, bottom = 0, len(matrix)
+        i = j = 0
+        result = []
+        while left < right and top < bottom:
+            for j in range(left, right):
+                result.append(matrix[top][j])
+            top += 1
+    
+            for i in range(top, bottom):
+                result.append(matrix[i][right - 1])
+            right -= 1
 
+            if len(result) == len(matrix[0]) * len(matrix):
+                break
+
+            for j in range(right - 1, left - 1, -1):
+                result.append(matrix[bottom - 1][j])
+            bottom -= 1
+
+            for i in range(bottom - 1, top - 1, - 1):
+                result.append(matrix[i][left])
+            left += 1
+
+        return result
 ```
