@@ -13,10 +13,10 @@ Each time you can either climb 1 or 2 steps. In how many distinct ways can you c
 ```
 
 ## Solution
-Applying DP thinking, ways to get to each step build on ways to get to two previous step.
+It's tempting here to think that similar to the climbing problem, you always pick the `n`th house and the max dp value from `n - 2`. However, this results in incorrect results because the maximum value solution at point `n` house.
 
-Since we can only climb 1 or 2 steps at a time, the ways to get to step `n` would be taking two steps from `n - 2` or one step from `n - 1`.
-The answer would thus be the summation of the two ways.
+Thus, `dp[i] = max(dp[i] + dp[i - 2], dp[i - 1])`.
+
 
 ```python
 class Solution:
