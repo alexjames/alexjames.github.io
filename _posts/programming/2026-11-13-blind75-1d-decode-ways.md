@@ -35,7 +35,14 @@ The test cases are generated so that the answer fits in a 32-bit integer.
 ```
 
 ## Solution
-I struggled with this because it was confusing how to count the number of ways to decode a string.
+I struggled with this because it was confusing how to count the number of ways to decode a string. Here were the main insights that were needed to solve this question -
+(1) The option split only comes from 1 or 2. If you only had the other non-zero digits, there would only be one way to decode the string. That's the base case.
+(2) If you have a 1, then any digit following it works.
+(3) If you have a 2, then only 0 to 6 can follow it. Otherwise, there is only one way to decode the 2.
+
+The key thing here is the question asks ways to decode a string of some length. Whenever you encounter a question such as this, ask if we can figure out number of ways to decode smaller strings and then if there a relationship between those and our string.
+
+Also, in this problem, it's easier to work from the end of the string, building up the number of ways to decode the string from smaller to larger length strings.
 
 ### Recursive
 ```python
