@@ -7,29 +7,66 @@ categories: programming
 
 ## Question
 ```
-You are climbing a staircase. It takes n steps to reach the top.
+You have intercepted a secret message encoded as a string of numbers. The message is decoded via the following mapping:
 
-Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+"1" -> 'A'
+
+"2" -> 'B'
+
+...
+
+"25" -> 'Y'
+
+"26" -> 'Z'
+
+However, while decoding the message, you realize that there are many different ways you can decode the message because some codes are contained in other codes ("2" and "5" vs "25").
+
+For example, "11106" can be decoded into:
+
+"AAJF" with the grouping (1, 1, 10, 6)
+"KJF" with the grouping (11, 10, 6)
+The grouping (1, 11, 06) is invalid because "06" is not a valid code (only "6" is valid).
+Note: there may be strings that are impossible to decode.
+
+Given a string s containing only digits, return the number of ways to decode it. If the entire string cannot be decoded in any valid way, return 0.
+
+The test cases are generated so that the answer fits in a 32-bit integer.
+
 ```
 
 ## Solution
-This seems tricky because if we pick the first house, we can't pick the last. And vice-versa.
+I struggled with this because it was confusing how to count the number of ways to decode a string.
 
-Imagine you could break the chain and lay the houses out. We can then simulate house robber 1 twice for all but the first and all but the last.
-The answers should be the max of these two.
-
+### Recursive
 ```python
 class Solution:
-    def rob_houses(self, nums: list[int]) -> int:
-        dp = [0] * len(nums)
-        dp[0] = nums[0]
-        dp[1] = max(nums[0], nums[1])
-        for i in range(2, len(nums)):
-            dp[i] = max(nums[i] + dp[i-2], dp[i-1])
-        return dp[-1]
-
-    def rob(self, nums: list[int]) -> int:
-        if len(nums) <= 2:
-            return max(nums)
-        return max(self.rob_houses(nums[1:]), self.rob_houses(nums[:-1]))
+    def numDecodings(self, s: str) -> int:
+        if len(s) == 0:
+            return 1
+        if s[0] == '0':
+            return 0
+        if len(s) > 1 and (s[0] == '1' or s[0] == '2'):
+            if s[1] == '0':
+                return self.numDecodings(s[2:])
+            if s[0] == '2' and int(s[1]) > 6:
+                return self.numDecodings(s[1:])
+            else:
+                return self.numDecodings(s[1:]) + self.numDecodings(s[2:])
+        return self.numDecodings(s[1:])
+```
+### Recursion with memoization
+```python
+class Solution:
+    def numDecodings(self, s: str) -> int:
+        nums = (len(s) + 2) * [0]
+        nums[-1] = 0
+        nums[-2] = 1
+        for i in reversed(range(len(s))):
+            if s[i] == '0':
+                nums[i] = 0
+            elif s[i] == '1' or (s[i] == '2' and i + 1 < len(s) and int(s[i+1]) <= 6):
+                nums[i] = nums[i + 1] + nums[i + 2]
+            else:
+                nums[i] = nums[i+1]
+        return nums[0]
 ```
