@@ -18,6 +18,8 @@ Note that the product of an array with a single element is the value of that ele
 ```
 
 ### Solutions
+TODO(ajames): Add clarity
+
 The optimum solution is going to be a modification of Kadane's algorithm. On every iteration through the array we will look at three values:
 
 `nums[i]`
@@ -25,6 +27,8 @@ The optimum solution is going to be a modification of Kadane's algorithm. On eve
 `max_val * nums[i]`
 
 `min_val * nums[i]`
+
+The mechanics of this is that the current window is always expanded and multiplied by the max and min values seen. We need to track both because a negative number can cause a switch in the min value becoming the max. Any 0 resets all values.
 
 ```python
 class Solution:
