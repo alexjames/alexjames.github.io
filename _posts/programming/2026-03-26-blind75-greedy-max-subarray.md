@@ -35,3 +35,14 @@ class Solution:
             largest_sum = max(largest_sum, running_sum)
         return largest_sum
 ```
+
+### Shorter version
+```python
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        largest_sum = running_sum = nums[0]
+        for i in range(1, len(nums)):
+            running_sum = max(0, running_sum + nums[i])
+            largest_sum = max(largest_sum, running_sum)
+        return largest_sum
+```
